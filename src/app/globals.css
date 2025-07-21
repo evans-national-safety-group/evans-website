@@ -1,0 +1,506 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for Evans National Safety Group Brand */
+:root {
+  /* Evans Brand Colors */
+  --evans-blue: #1e3a8a;
+  --evans-slate: #64748b;
+  --evans-green: #059669;
+  --evans-orange: #ea580c;
+  --evans-cream: #fef7ed;
+  
+  /* Extended Color Palette */
+  --evans-blue-light: #3b82f6;
+  --evans-blue-dark: #1e40af;
+  --evans-green-light: #10b981;
+  --evans-green-dark: #047857;
+  
+  /* Typography */
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-evans: 0 10px 25px rgba(30, 58, 138, 0.15);
+  --shadow-evans-lg: 0 20px 40px rgba(30, 58, 138, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Improved focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--evans-blue);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--evans-blue);
+  outline-offset: 2px;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #1e293b;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* Links */
+a {
+  color: var(--evans-blue);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--evans-blue-light);
+  text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Code */
+code {
+  font-family: 'JetBrains Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+  font-size: 0.875em;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* Component Styles */
+@layer components {
+  /* Button Components */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-evans-blue-500 text-white hover:bg-evans-blue-600 focus:ring-evans-blue-500 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-white text-evans-blue-500 border-2 border-evans-blue-500 hover:bg-evans-blue-500 hover:text-white focus:ring-evans-blue-500;
+  }
+  
+  .btn-success {
+    @apply btn bg-evans-green-500 text-white hover:bg-evans-green-600 focus:ring-evans-green-500 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+
+  /* Card Components */
+  .card {
+    @apply bg-white rounded-xl shadow-card border border-slate-200 transition-all duration-300;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-card-hover hover:-translate-y-1;
+  }
+  
+  .card-evans {
+    @apply card hover:shadow-evans-lg hover:-translate-y-2;
+  }
+  
+  /* Input Components */
+  .input {
+    @apply w-full px-4 py-3 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-evans-blue-500 focus:border-evans-blue-500 transition-colors duration-200;
+  }
+  
+  .input-error {
+    @apply input border-red-300 focus:ring-red-500 focus:border-red-500;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-slate-700 mb-2;
+  }
+  
+  .error-message {
+    @apply text-sm text-red-600 mt-1;
+  }
+
+  /* Navigation Components */
+  .nav-link {
+    @apply text-slate-600 hover:text-evans-blue-500 font-medium transition-colors duration-200 relative;
+  }
+  
+  .nav-link.active {
+    @apply text-evans-blue-500;
+  }
+  
+  .nav-link::after {
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-evans-blue-500 transition-all duration-300;
+    content: '';
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Section Components */
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-sm {
+    @apply py-8 md:py-12;
+  }
+  
+  .section-lg {
+    @apply py-20 md:py-32;
+  }
+  
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-sm {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gradient Text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-evans-blue-500 to-evans-green-500 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-evans {
+    @apply bg-evans-gradient bg-clip-text text-transparent;
+  }
+
+  /* Animation Classes */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-down {
+    animation: fadeInDown 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* Scroll Padding */
+  .scroll-pt-nav {
+    scroll-padding-top: 5rem;
+  }
+  
+  /* Text Selection */
+  .select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  /* Backdrop Blur Utilities */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Smooth Scrolling */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hide Scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Gradient Backgrounds */
+  .bg-gradient-evans {
+    background: linear-gradient(135deg, var(--evans-blue) 0%, var(--evans-green) 100%);
+  }
+  
+  .bg-gradient-evans-light {
+    background: linear-gradient(135deg, var(--evans-blue-light) 0%, var(--evans-green-light) 100%);
+  }
+  
+  .bg-hero-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, var(--evans-blue) 50%, var(--evans-green) 100%);
+  }
+  
+  /* Text Shadows */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--evans-slate);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--evans-blue);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--evans-slate) #f1f5f9;
+}
+
+/* Print Styles */
+@media print {
+  *, *::before, *::after {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  
+  .no-print, nav, footer, .btn {
+    display: none !important;
+  }
+  
+  @page {
+    margin: 0.5in;
+  }
+  
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --evans-blue: #000080;
+    --evans-green: #006400;
+  }
+  
+  .card {
+    border-width: 2px;
+    border-color: #000000;
+  }
+  
+  .btn-primary {
+    background-color: #000080;
+    border: 2px solid #000080;
+  }
+  
+  .btn-secondary {
+    border-width: 2px;
+    border-color: #000080;
+  }
+}
+
+/* Dark Mode Support (Future Enhancement) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --evans-cream: #1e293b;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #f8fafc;
+  }
+  
+  p, li {
+    color: #cbd5e1;
+  }
+  
+  .card {
+    background-color: #1e293b;
+    border-color: #374151;
+  }
+}
