@@ -59,9 +59,8 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none';"
 
 # Performance headers for static assets
 [[headers]]
@@ -79,105 +78,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
-[[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-
-# API headers (if needed for future API routes)
-[[headers]]
-  for = "/api/*"
-  [headers.values]
-    Cache-Control = "no-store, must-revalidate"
-    X-Robots-Tag = "noindex, nofollow"
-
-# Form handling configuration
-[forms]
-  # Contact form
-  [forms.contact]
-    name = "contact"
-    action = "/#contact"
-    method = "POST"
-    
-  # Demo request form
-  [forms.demo]
-    name = "demo-request"
-    action = "/#contact"
-    method = "POST"
-
-# Prerendering configuration for better SEO
-[build.processing.css]
-  bundle = true
-  minify = true
-  
-[build.processing.js]
-  bundle = true
-  minify = true
-  
-[build.processing.html]
-  pretty_urls = true
-
-# Error pages
-[[redirects]]
-  from = "/404"
-  to = "/404.html"
-  status = 404
-
 # Plugin configuration
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[plugins]]
-  package = "netlify-plugin-submit-sitemap"
-  [plugins.inputs]
-    baseUrl = "https://evansnationalsafety.com"
-    sitemapPath = "/sitemap.xml"
-    ignorePeriod = 0
-    providers = [
-      "google",
-      "bing"
-    ]
-
-# Analytics and optimization
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  [plugins.inputs]
-    audit_url = "https://evansnationalsafety.com"
-    
 # Development settings
 [dev]
   command = "npm run dev"
   port = 3000
   publish = "out"
   autoLaunch = false
-
-# Large media configuration (for future use)
-[large_media]
-  # Enable Git LFS for large assets
-  
-# Split testing configuration (for A/B testing)
-[split-testing]
-  # Future A/B testing configurations
-
-# Edge functions (for future API endpoints)
-[edge_functions]
-  # Custom edge functions for performance optimization
-
-# Environment variable templates
-[template.environment]
-  NEXT_PUBLIC_SITE_URL = "https://evansnationalsafety.com"
-  NEXT_PUBLIC_GA_ID = "GA_MEASUREMENT_ID"
-  NEXT_PUBLIC_HOTJAR_ID = "HOTJAR_ID"
-  NEXT_PUBLIC_INTERCOM_APP_ID = "INTERCOM_APP_ID"
-  CONTACT_FORM_WEBHOOK_URL = "WEBHOOK_URL_FOR_CONTACT_FORM"
-  DEMO_REQUEST_WEBHOOK_URL = "WEBHOOK_URL_FOR_DEMO_REQUESTS"
-
-# Branch-specific settings
-[context.production.environment]
-  NODE_ENV = "production"
-  
-[context.deploy-preview.environment]
-  NODE_ENV = "preview"
-  
-[context.branch-deploy.environment]
-  NODE_ENV = "development"
