@@ -148,23 +148,23 @@ export default function HomePage() {
       name: "Sarah Johnson",
       role: "Director of Child Services",
       organization: "State Department of Social Services",
-      content: "ECPORA has revolutionized our assessment process. The AI insights have helped us identify risk factors we might have missed, and the compliance features ensure we meet all regulatory requirements.",
+      content: "The Evans team's ECPORA assessment transformed our organization. Their technology-enhanced approach helped us identify critical gaps we hadn't seen, and their ongoing support has been invaluable.",
       rating: 5,
       image: "/images/testimonials/sarah-johnson.jpg"
     },
     {
       name: "Michael Chen",
-      role: "Senior Consultant",
-      organization: "Regional Child Protection Agency",
-      content: "The mobile app is a game-changer for field work. Being able to complete assessments offline and sync automatically has dramatically improved our efficiency and data quality.",
+      role: "Senior Administrator",
+      organization: "Regional Education Cooperative",
+      content: "Working with Evans National Safety Group gave us confidence in our child protection protocols. Their expert team and comprehensive assessment process exceeded our expectations.",
       rating: 5,
       image: "/images/testimonials/michael-chen.jpg"
     },
     {
       name: "Dr. Emily Rodriguez",
-      role: "Chief Technology Officer",
-      organization: "National Child Welfare Organization",
-      content: "Evans National Safety Group has created something truly special with ECPORA. The platform's sophistication combined with intuitive design makes it perfect for our diverse user base.",
+      role: "Executive Director",
+      organization: "National Youth Organization",
+      content: "The combination of deep expertise and innovative technology makes Evans National Safety Group unique. Their assessment methodology is thorough, and their team is genuinely committed to child safety.",
       rating: 5,
       image: "/images/testimonials/emily-rodriguez.jpg"
     }
@@ -172,56 +172,54 @@ export default function HomePage() {
 
   const pricingTiers = [
     {
-      name: "Professional",
-      price: "$99",
-      period: "per user/month",
-      description: "Perfect for individual consultants and small teams",
+      name: "ECPORA Assessment",
+      price: "From $25,000",
+      period: "per assessment",
+      description: "Comprehensive organizational readiness evaluation",
       features: [
-        "Complete ECPORA Platform Access",
-        "Mobile App & Offline Capability", 
-        "Basic Analytics & Reporting",
-        "Email Support",
-        "Standard Compliance Tools",
-        "Up to 50 Active Cases"
-      ],
-      popular: false,
-      cta: "Start Free Trial"
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "contact for pricing",
-      description: "Comprehensive solution for large organizations",
-      features: [
-        "Full Platform & Mobile Access",
-        "Advanced AI Integrations",
-        "Custom Analytics & Dashboards",
-        "24/7 Priority Support",
-        "Advanced Compliance & Audit",
-        "Unlimited Cases & Users",
-        "Custom Integrations",
-        "Dedicated Account Manager"
+        "Complete 8-Domain ECPORA Methodology",
+        "AI-Enhanced Document Analysis", 
+        "3-Day On-Site Assessment",
+        "Executive Presentation & Report",
+        "90-Day Implementation Roadmap",
+        "Follow-Up Consultation Included"
       ],
       popular: true,
-      cta: "Contact Sales"
+      cta: "Schedule Assessment"
     },
     {
-      name: "Government",
-      price: "Contact",
-      period: "for special pricing",
-      description: "Specialized solutions for government agencies",
+      name: "Platform Access", 
+      price: "$99",
+      period: "per user/month",
+      description: "Technology-enhanced assessment delivery platform",
       features: [
-        "FedRAMP Certified Platform",
-        "Government Cloud Deployment",
-        "Custom Security Controls",
-        "Compliance Consulting",
-        "Training & Certification",
-        "Multi-Agency Coordination",
-        "Emergency Response Features",
-        "Regulatory Reporting Tools"
+        "Assessment Workflow Management",
+        "AI-Powered Analysis Tools",
+        "Real-Time Collaboration",
+        "Progress Tracking Dashboard",
+        "Secure Document Management",
+        "Integration with Assessment Process"
       ],
       popular: false,
       cta: "Request Demo"
+    },
+    {
+      name: "Enterprise Services",
+      price: "Contact",
+      period: "for custom pricing",
+      description: "Comprehensive solutions for large organizations",
+      features: [
+        "Multi-Site Assessment Programs",
+        "Executive Advisory Access",
+        "Custom Training Development",
+        "24/7 Crisis Response Support",
+        "Dedicated Account Management", 
+        "Government Contract Capabilities",
+        "White-Label Platform Options",
+        "Advanced Analytics & Reporting"
+      ],
+      popular: false,
+      cta: "Contact Sales"
     }
   ]
 
@@ -242,12 +240,16 @@ export default function HomePage() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-evans-gradient rounded-xl flex items-center justify-center">
-                <Shield className="w-8 h-8 text-white" />
+              <div className="w-16 h-12 bg-white/95 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
+                <img 
+                  src="/images/evans-logo.png" 
+                  alt="Evans National Safety Group" 
+                  className="h-8 w-auto"
+                />
               </div>
               <div>
                 <div className="text-xl font-bold text-slate-900">Evans National Safety Group</div>
-                <div className="text-sm text-evans-blue-500 font-medium">ECPORA Platform</div>
+                <div className="text-sm text-evans-blue-500 font-medium">ECPORA Assessments</div>
               </div>
             </div>
 
@@ -303,25 +305,26 @@ export default function HomePage() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-              The Future of{' '}
+              Technology-Enhanced{' '}
               <span className="text-gradient bg-gradient-to-r from-evans-green-400 to-evans-orange-400 bg-clip-text text-transparent">
                 Child Protection
-              </span>
+              </span>{' '}
+              Assessments
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
-              ECPORA delivers AI-enhanced assessment solutions with evidence-based methodology, 
-              comprehensive compliance automation, and enterprise-grade security for government agencies and organizations nationwide.
+              Evans National Safety Group delivers comprehensive ECPORA organizational assessments 
+              backed by 27+ years of child protection expertise, evidence-based methodology, and AI-enhanced analysis tools.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up">
               <button className="btn-primary btn-lg group">
-                Request Live Demo
-                <Play className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
+                Schedule ECPORA Assessment
+                <Calendar className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
               </button>
               <button className="btn-secondary btn-lg text-white border-white hover:bg-white hover:text-slate-900">
-                Explore Platform
-                <ExternalLink className="w-5 h-5 ml-2" />
+                Platform Demo
+                <Play className="w-5 h-5 ml-2" />
               </button>
             </div>
 
@@ -637,18 +640,23 @@ export default function HomePage() {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-evans-gradient rounded-xl flex items-center justify-center">
-                  <Shield className="w-8 h-8 text-white" />
+                <div className="w-16 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
+                  <img 
+                    src="/images/evans-logo.png" 
+                    alt="Evans National Safety Group" 
+                    className="h-8 w-auto filter brightness-0 invert"
+                  />
                 </div>
                 <div>
                   <div className="text-xl font-bold">Evans National Safety Group</div>
-                  <div className="text-evans-blue-400 font-medium">ECPORA Platform</div>
+                  <div className="text-evans-blue-400 font-medium">ECPORA Assessments</div>
                 </div>
               </div>
               <p className="text-slate-400 mb-6 leading-relaxed">
-                Leading provider of enterprise-grade child protection assessment solutions. 
-                Empowering professionals with AI-enhanced tools, evidence-based methodology, 
-                and comprehensive compliance automation.
+                Evans National Safety Group delivers comprehensive ECPORA organizational assessments 
+                backed by 27+ years of child protection expertise. Our expert consultant team combines 
+                evidence-based methodology with technology-enhanced analysis tools to help organizations 
+                build safer environments for children and communities.
               </p>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center text-sm text-slate-400">
@@ -666,11 +674,11 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-semibold mb-6">Solutions</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">ECPORA Platform</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Mobile Application</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">AI Integrations</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Training & Certification</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Compliance Tools</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">ECPORA Assessments</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Technology Platform</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Training Programs</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Advisory Services</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Implementation Support</a></li>
               </ul>
             </div>
 
