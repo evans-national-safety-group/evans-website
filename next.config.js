@@ -1,59 +1,36 @@
-[build]
-  command = "npm run build"
-  publish = "out"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
   
-[build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "8"
-  NEXT_TELEMETRY_DISABLED = "1"
+  // Enable static export for Netlify
+  output: 'export',
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
+  distDir: 'out',
   
-# Redirects handled by Netlify (since Next.js static export can't handle them)
-[[redirects]]
-  from = "/home"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/contact-us"
-  to = "/#contact"
-  status = 301
+  // Image optimization for static export
+  images: {
+    unoptimized: true
+  },
   
-[[redirects]]
-  from = "/about-us" 
-  to = "/#platform"
-  status = 301
+  // SEO and performance optimizations
+  poweredByHeader: false,
+  generateEtags: false,
+  compress: true,
   
-[[redirects]]
-  from = "/solutions"
-  to = "/#ecosystem"
-  status = 301
+  // Build optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production'
+  },
   
-[[redirects]]
-  from = "/demo"
-  to = "/#contact"
-  status = 301
+  // Ignore build errors temporarily during development
+  typescript: {
+    ignoreBuildErrors: process.env.NODE_ENV === 'development'
+  },
+  eslint: {
+    ignoreDuringBuilds: process.env.NODE_ENV === 'development'
+  }
+}
 
-# SPA fallback for client-side routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# Basic security headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Cache static assets
-[[headers]]
-  for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+module.exports = nextConfig
