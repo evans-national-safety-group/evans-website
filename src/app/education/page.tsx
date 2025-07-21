@@ -18,510 +18,555 @@ import {
   Phone,
   Calendar,
   BookOpen,
-  GraduationCap,
-  School,
-  UserCheck,
+  Target,
+  TrendingUp,
   Eye,
-  Database,
-  CheckSquare,
-  Heart,
-  AlertTriangle,
+  UserCheck,
+  GraduationCap,
   Menu,
   X
 } from 'lucide-react'
 
 export default function EducationPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [activeTab, setActiveTab] = useState('k12')
 
+  // Header scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const header = document.querySelector('.header')
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('bg-white/95', 'backdrop-blur-md', 'border-b', 'border-slate-200')
+          header.classList.remove('bg-white')
+        } else {
+          header.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-b', 'border-slate-200')
+          header.classList.add('bg-white')
+        }
+      }
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const educationFeatures = [
+  const educationServices = [
     {
-      icon: <School className="w-8 h-8" />,
-      title: "Campus-Wide Safety Assessment",
-      description: "Comprehensive evaluation of child protection protocols across all educational environments and programs."
+      name: "K-12 School Districts",
+      description: "Comprehensive campus-wide assessments for elementary, middle, and high school environments",
+      features: [
+        "Multi-school district coordination",
+        "Age-appropriate protocol development",
+        "Parent and community engagement",
+        "Educational staff training integration",
+        "Academic calendar alignment",
+        "Title IX compliance support"
+      ],
+      highlighted: false,
+      cta: "Request K-12 Assessment"
     },
     {
-      icon: <UserCheck className="w-8 h-8" />,
-      title: "FERPA-Compliant Processes",
-      description: "All assessments conducted with full adherence to student privacy laws and educational data protection requirements."
+      name: "Higher Education Institutions",
+      description: "University and college assessments with student life and academic program integration",
+      features: [
+        "All K-12 District benefits",
+        "Residence hall safety protocols",
+        "Campus-wide policy development",
+        "Student organization guidelines",
+        "Faculty and staff training",
+        "Research program compliance",
+        "Athletics department integration",
+        "Board of trustees reporting"
+      ],
+      highlighted: true,
+      cta: "Schedule Campus Consultation"
     },
     {
-      icon: <BookOpen className="w-8 h-8" />,
-      title: "Educational Mission Integration",
-      description: "Recommendations that strengthen child protection while supporting your institution's educational goals and values."
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Multi-Stakeholder Engagement",
-      description: "Coordinated approach involving faculty, staff, students, parents, and community partners in the assessment process."
-    },
-    {
-      icon: <Calendar className="w-8 h-8" />,
-      title: "Academic Calendar Alignment", 
-      description: "Flexible scheduling that minimizes disruption to educational activities and aligns with institutional priorities."
-    },
-    {
-      icon: <GraduationCap className="w-8 h-8" />,
-      title: "Professional Development Integration",
-      description: "Assessment findings integrated with existing staff development programs and continuing education requirements."
-    }
-  ]
-
-  const educationBenefits = [
-    {
-      metric: "Student Safety",
-      description: "Enhanced protection protocols for all educational environments",
-      icon: <Heart className="w-6 h-6" />
-    },
-    {
-      metric: "Staff Confidence",
-      description: "Increased educator preparedness for child protection scenarios",
-      icon: <Users className="w-6 h-6" />
-    },
-    {
-      metric: "Compliance Assurance", 
-      description: "Full adherence to educational regulations and privacy requirements",
-      icon: <CheckSquare className="w-6 h-6" />
-    },
-    {
-      metric: "Community Trust",
-      description: "Strengthened relationships with families and community partners",
-      icon: <School className="w-6 h-6" />
+      name: "Early Childhood Centers",
+      description: "Specialized assessments for preschools, daycare centers, and early learning programs",
+      features: [
+        "All Higher Education benefits",
+        "Developmental-appropriate protocols",
+        "Family engagement strategies",
+        "State licensing compliance",
+        "Caregiver training programs",
+        "Environmental safety assessments",
+        "Transition planning support",
+        "Quality rating improvements",
+        "Community partnership development",
+        "Professional development credits"
+      ],
+      highlighted: false,
+      cta: "Begin Early Childhood Partnership"
     }
   ]
 
   const educationCompliance = [
-    { name: "FERPA Compliance", description: "Student privacy and educational record protection" },
-    { name: "Title IX Requirements", description: "Gender equity and harassment prevention protocols" },
-    { name: "Mandatory Reporting", description: "Clear procedures for suspected abuse reporting" },
-    { name: "Background Checks", description: "Comprehensive staff and volunteer screening processes" },
-    { name: "Campus Security", description: "Physical safety and emergency response protocols" },
-    { name: "Digital Safety", description: "Online learning environment protection measures" }
+    {
+      standard: "FERPA Compliance",
+      requirements: "Family Educational Rights and Privacy Act, student record protection, privacy protocols",
+      scope: "Contact for educational compliance",
+      timeline: "Academic year integration planning"
+    },
+    {
+      standard: "Title IX Alignment",
+      requirements: "Gender equity, harassment prevention, campus safety, reporting protocols",
+      scope: "Contact for Title IX framework",
+      timeline: "Semester-based implementation"
+    },
+    {
+      standard: "Mandatory Reporting",
+      requirements: "State-specific reporting requirements, staff training, documentation protocols",
+      scope: "Contact for reporting compliance",
+      timeline: "Immediate staff training integration"
+    },
+    {
+      standard: "Background Checks",
+      requirements: "Employee screening, volunteer management, contractor oversight, ongoing monitoring",
+      scope: "Contact for screening programs",
+      timeline: "Continuous monitoring systems"
+    }
   ]
 
-  const educationSegments = [
+  const educationOutcomes = [
     {
-      title: "K-12 School Districts",
-      description: "Comprehensive district-wide assessments",
-      features: ["Multi-school coordination", "Age-appropriate protocols", "Parent engagement strategies"],
-      pricing: "Starting at $35,000"
+      metric: "Student Safety",
+      description: "Enhanced protection protocols ensuring safe learning environments for all students",
+      icon: Shield
     },
     {
-      title: "Higher Education Institutions", 
-      description: "University and college campus assessments",
-      features: ["Residential life protocols", "Student organization oversight", "Campus-wide training"],
-      pricing: "Starting at $50,000"
+      metric: "Educational Excellence", 
+      description: "Integration with academic mission promoting both safety and learning outcomes",
+      icon: GraduationCap
     },
     {
-      title: "Early Childhood Centers",
-      description: "Specialized assessments for young learners",
-      features: ["Developmental considerations", "Family partnership focus", "Staff specialization"],
-      pricing: "Starting at $25,000"
+      metric: "Community Trust",
+      description: "Strengthened parent and community confidence through transparent practices",
+      icon: Users
+    },
+    {
+      metric: "Regulatory Compliance",
+      description: "Full adherence to educational regulations and accreditation standards",
+      icon: CheckCircle
     }
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-evans-cream-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}>
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+      <header className="header fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-16 h-12 bg-white/95 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
+              <div className="w-16 h-12 bg-slate-50 rounded-lg flex items-center justify-center px-2">
                 <img 
                   src="/images/evans-logo.png" 
                   alt="Evans National Safety Group" 
                   className="h-8 w-auto"
                 />
               </div>
-              <div>
-                <div className="text-xl font-bold text-slate-900">Evans National Safety Group</div>
-                <div className="text-sm text-evans-blue-500 font-medium">Education Solutions</div>
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold text-slate-800">Evans National Safety Group</h1>
+                <p className="text-sm text-slate-600">Education Solutions</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <a href="/" className="nav-link">Home</a>
-              <a href="#solutions" className="nav-link">Solutions</a>
-              <a href="#segments" className="nav-link">Segments</a>
-              <a href="#process" className="nav-link">Process</a>
-              <a href="#contact" className="nav-link">Contact</a>
-              <button className="btn-primary">
-                Schedule Campus Assessment
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="/" className="text-slate-700 hover:text-evans-blue transition-colors">Home</a>
+              <a href="/#services" className="text-slate-700 hover:text-evans-blue transition-colors">Services</a>
+              <a href="/#about" className="text-slate-700 hover:text-evans-blue transition-colors">About</a>
+              <a href="/#contact" className="text-slate-700 hover:text-evans-blue transition-colors">Contact</a>
+              <a 
+                href="#assessment" 
+                className="btn-evans"
+              >
+                Request Assessment
+              </a>
+            </nav>
 
-            {/* Mobile Menu Button */}
-            <button 
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100"
+            {/* Mobile menu button */}
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden rounded-md p-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="lg:hidden bg-white border-t border-slate-200">
-              <div className="px-4 py-6 space-y-4">
-                <a href="/" className="block py-2 text-slate-600 hover:text-evans-blue-500">Home</a>
-                <a href="#solutions" className="block py-2 text-slate-600 hover:text-evans-blue-500">Solutions</a>
-                <a href="#segments" className="block py-2 text-slate-600 hover:text-evans-blue-500">Segments</a>
-                <a href="#process" className="block py-2 text-slate-600 hover:text-evans-blue-500">Process</a>
-                <a href="#contact" className="block py-2 text-slate-600 hover:text-evans-blue-500">Contact</a>
-                <button className="btn-primary w-full">
-                  Schedule Campus Assessment
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
-              </div>
-            </div>
-          )}
         </div>
-      </nav>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="/" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Home</a>
+              <a href="/#services" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Services</a>
+              <a href="/#about" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">About</a>
+              <a href="/#contact" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Contact</a>
+              <a href="#assessment" className="block px-3 py-2 rounded-md btn-evans">Request Assessment</a>
+            </div>
+          </div>
+        )}
+      </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-hero-gradient text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-8 animate-fade-in-down">
-              <School className="w-4 h-4 mr-2" />
-              Protecting Students Across Educational Systems
+      <section className="pt-20 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-evans-green/10 rounded-full text-evans-green text-sm font-medium mb-6">
+              <GraduationCap className="w-4 h-4 mr-2" />
+              Education-Focused Child Protection
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-              Educational{' '}
-              <span className="text-gradient bg-gradient-to-r from-evans-green-400 to-evans-orange-400 bg-clip-text text-transparent">
-                Child Protection
-              </span>{' '}
-              Excellence
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800 mb-6 leading-tight">
+              Safe Learning
+              <span className="block text-evans-green">
+                Environments
+              </span>
+              <span className="block text-slate-600">
+                Excellence
+              </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
-              Evans National Safety Group delivers comprehensive ECPORA assessments specifically designed 
-              for educational institutions, ensuring student safety while supporting your educational mission 
-              with FERPA-compliant processes and flexible implementation.
+            <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+              ECPORA assessments designed for educational institutions at all levels. 
+              Academic mission integration with FERPA compliance and education-friendly implementation aligned with your learning community's needs.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up">
-              <button className="btn-primary btn-lg group">
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <a 
+                href="#assessment" 
+                className="bg-evans-green hover:bg-evans-green/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center group"
+              >
                 Schedule Campus Assessment
-                <School className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
-              </button>
-              <button className="btn-secondary btn-lg text-white border-white hover:bg-white hover:text-slate-900">
-                Education Capability Overview
-                <BookOpen className="w-5 h-5 ml-2" />
-              </button>
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a 
+                href="#compliance" 
+                className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+              >
+                Educational Compliance Guide
+              </a>
             </div>
 
-            {/* Education Benefits */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up">
-              {educationBenefits.map((benefit, index) => (
-                <div key={index} className="text-center">
-                  <div className="flex justify-center mb-2">
-                    <div className="p-3 bg-white/10 backdrop-blur-sm rounded-lg">
-                      {benefit.icon}
+            {/* Educational Success Metrics */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              {educationOutcomes.map((outcome, index) => {
+                const Icon = outcome.icon
+                return (
+                  <div key={index} className="text-center">
+                    <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Icon className="w-6 h-6 text-evans-green" />
                     </div>
+                    <h3 className="text-slate-800 font-semibold mb-1">{outcome.metric}</h3>
+                    <p className="text-slate-600 text-sm">{outcome.description}</p>
                   </div>
-                  <div className="text-lg font-bold mb-1">{benefit.metric}</div>
-                  <div className="text-slate-300 text-sm">{benefit.description}</div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Education Solutions */}
-      <section id="solutions" className="section bg-white">
-        <div className="container">
+      {/* Educational Services */}
+      <section id="assessment" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-blue-50 text-evans-blue-600 rounded-full text-sm font-medium mb-4">
-              <GraduationCap className="w-4 h-4 mr-2" />
-              Educational Solutions
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Designed for Educational Excellence
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Educational Child Protection 
+              <span className="text-evans-green block">Assessment Solutions</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our ECPORA methodology is specially adapted for educational environments, balancing 
-              comprehensive child protection with the unique needs of learning communities.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {educationFeatures.map((feature, index) => (
-              <div key={index} className="card-hover p-8 group">
-                <div className="flex items-center justify-center w-16 h-16 bg-evans-gradient rounded-2xl text-white mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-900">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Education Segments */}
-      <section id="segments" className="section bg-slate-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-green-50 text-evans-green-600 rounded-full text-sm font-medium mb-4">
-              <Users className="w-4 h-4 mr-2" />
-              Education Segments
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Tailored for Every Educational Level
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              From early childhood centers to major universities, our assessment approach adapts 
-              to the unique challenges and opportunities of each educational environment.
+              Comprehensive ECPORA assessments tailored for educational institutions. Investment varies based on institution size, student population, and academic integration requirements. Contact us to discuss educational pricing and academic calendar alignment.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {educationSegments.map((segment, index) => (
-              <div key={index} className="card-evans p-8">
-                <h3 className="text-2xl font-bold mb-4">{segment.title}</h3>
-                <p className="text-slate-600 mb-6">{segment.description}</p>
-                
-                <div className="space-y-3 mb-8">
-                  {segment.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-slate-700">{feature}</span>
+            {educationServices.map((service, index) => (
+              <div 
+                key={index} 
+                className={`relative rounded-2xl p-8 transition-all duration-300 hover:scale-105 ${
+                  service.highlighted 
+                    ? 'bg-evans-green text-white shadow-2xl border-2 border-evans-green' 
+                    : 'bg-white border-2 border-slate-200 hover:border-evans-green shadow-lg hover:shadow-xl'
+                }`}
+              >
+                {service.highlighted && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-evans-orange text-white px-4 py-2 rounded-full text-sm font-semibold">
+                      Most Popular
                     </div>
+                  </div>
+                )}
+                
+                <div className="text-center mb-8">
+                  <h3 className={`text-2xl font-bold mb-3 ${service.highlighted ? 'text-white' : 'text-slate-800'}`}>
+                    {service.name}
+                  </h3>
+                  <div className="mb-4">
+                    <div className={`text-lg font-semibold px-4 py-2 rounded-lg inline-block ${
+                      service.highlighted 
+                        ? 'bg-white/10 text-white' 
+                        : 'bg-evans-green/10 text-evans-green'
+                    }`}>
+                      Contact for Educational Pricing
+                    </div>
+                  </div>
+                  <p className={`${service.highlighted ? 'text-slate-200' : 'text-slate-600'}`}>
+                    {service.description}
+                  </p>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start space-x-3">
+                      <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                        service.highlighted ? 'text-evans-orange' : 'text-evans-green'
+                      }`} />
+                      <span className={`${service.highlighted ? 'text-white' : 'text-slate-700'}`}>
+                        {feature}
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <div className="text-center mb-6">
-                  <div className="text-2xl font-bold text-evans-blue-500 mb-2">{segment.pricing}</div>
-                  <div className="text-sm text-slate-600">Contact for detailed proposal</div>
-                </div>
-
-                <button className="btn-primary w-full">
-                  Request Assessment Proposal
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
+                <a 
+                  href="#contact" 
+                  className={`w-full py-4 px-6 rounded-xl font-semibold text-center transition-all duration-300 block ${
+                    service.highlighted
+                      ? 'bg-white text-evans-green hover:bg-slate-100'
+                      : 'bg-evans-green text-white hover:bg-evans-green/90'
+                  }`}
+                >
+                  {service.cta}
+                </a>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Education Compliance */}
-      <section className="section bg-white">
-        <div className="container">
+      {/* Educational Compliance */}
+      <section id="compliance" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-medium mb-4">
-              <Lock className="w-4 h-4 mr-2" />
-              Educational Compliance
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Meeting Educational Standards
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Educational Compliance 
+              <span className="text-evans-green block">Standards & Integration</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our comprehensive approach ensures full compliance with educational regulations 
-              while respecting student privacy and supporting your institution's mission.
+              ECPORA assessments ensure full compliance with educational regulations while seamlessly integrating with your institution's academic mission and learning objectives.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {educationCompliance.map((standard, index) => (
-              <div key={index} className="card-hover p-6 text-center group">
-                <div className="w-16 h-16 bg-gradient-to-r from-evans-blue-500 to-evans-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Shield className="w-8 h-8 text-white" />
+          <div className="grid md:grid-cols-2 gap-8">
+            {educationCompliance.map((compliance, index) => (
+              <div key={index} className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-6 h-6 text-evans-green" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-800 mb-3">{compliance.standard}</h3>
+                    <p className="text-slate-600 mb-3">{compliance.requirements}</p>
+                    <div className="bg-evans-green/5 border-l-4 border-evans-green rounded-r-lg p-4 mb-3">
+                      <p className="text-sm text-slate-700"><strong>Scope:</strong> {compliance.scope}</p>
+                    </div>
+                    <p className="text-sm text-slate-600"><strong>Timeline:</strong> {compliance.timeline}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-slate-900">{standard.name}</h3>
-                <p className="text-slate-600 text-sm">{standard.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Education Process */}
-      <section id="process" className="section bg-slate-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-orange-50 text-evans-orange-600 rounded-full text-sm font-medium mb-4">
-              <Clock className="w-4 h-4 mr-2" />
-              Assessment Process
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Aligned with Academic Excellence
+      {/* Educational Value Proposition */}
+      <section className="py-20 bg-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-slate-800">
+            <h2 className="text-4xl font-bold mb-6">
+              Educational Partnership Value
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our educational assessment process is designed to work within academic calendars 
-              and educational priorities while delivering comprehensive insights and recommendations.
+            <p className="text-xl text-slate-600 mb-12 max-w-3xl mx-auto">
+              Child protection excellence integrated with educational mission to create safe learning environments that promote both student safety and academic achievement.
             </p>
-          </div>
 
-          <div className="grid lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                1
-              </div>
-              <h3 className="text-xl font-bold mb-4">Educational Planning</h3>
-              <p className="text-slate-600">Coordination with academic calendar and institutional priorities for minimal disruption</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                2
-              </div>
-              <h3 className="text-xl font-bold mb-4">Campus Assessment</h3>
-              <p className="text-slate-600">Comprehensive ECPORA evaluation with stakeholder engagement and FERPA compliance</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                3
-              </div>
-              <h3 className="text-xl font-bold mb-4">Educational Recommendations</h3>
-              <p className="text-slate-600">Mission-aligned action plan integrating with existing educational programs and goals</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-slate-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                4
-              </div>
-              <h3 className="text-xl font-bold mb-4">Professional Development</h3>
-              <p className="text-slate-600">Training integration with continuing education and staff development requirements</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Special Features for Education */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Specialized Educational Features
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our educational assessments include specialized considerations unique 
-              to learning environments and academic communities.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-evans-blue-600" />
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-green/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8 text-evans-green" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Academic Calendar Integration</h3>
-                  <p className="text-slate-600">Assessment schedules coordinated with breaks, professional development days, and academic priorities</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Users className="w-6 h-6 text-evans-green-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Multi-Stakeholder Approach</h3>
-                  <p className="text-slate-600">Engagement with students, parents, faculty, staff, and community partners in age-appropriate ways</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <GraduationCap className="w-6 h-6 text-evans-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Professional Development Credits</h3>
-                  <p className="text-slate-600">Training components designed to qualify for continuing education requirements where applicable</p>
-                </div>
+                <h3 className="text-xl font-bold mb-3">Student Safety</h3>
+                <p className="text-slate-600">
+                  Comprehensive protection protocols ensuring safe learning environments for students of all ages and backgrounds.
+                </p>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Heart className="w-6 h-6 text-evans-slate-600" />
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-green/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-evans-green" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Student-Centered Focus</h3>
-                  <p className="text-slate-600">All recommendations prioritize student well-being while supporting educational mission and goals</p>
-                </div>
+                <h3 className="text-xl font-bold mb-3">Community Trust</h3>
+                <p className="text-slate-600">
+                  Enhanced parent and community confidence through transparent practices and evidence-based safety protocols.
+                </p>
               </div>
-            </div>
-            
-            <div className="text-center">
-              <div className="card-evans p-8">
-                <h3 className="text-2xl font-bold mb-4">Education-Friendly Terms</h3>
-                <div className="text-4xl font-bold text-evans-blue-500 mb-4">Flexible Payment Options</div>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>Align with academic fiscal years</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>Grant funding coordination</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>Multi-year planning support</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>Board presentation materials</span>
-                  </div>
+
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-green/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <GraduationCap className="w-8 h-8 text-evans-green" />
                 </div>
-                <button className="btn-primary w-full">
-                  Discuss Educational Needs
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
+                <h3 className="text-xl font-bold mb-3">Academic Integration</h3>
+                <p className="text-slate-600">
+                  Seamless integration with educational mission promoting both safety excellence and learning outcomes.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="section bg-evans-gradient text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Strengthen Child Protection in Your Educational Community?
-          </h2>
-          <p className="text-xl text-slate-200 mb-12 max-w-3xl mx-auto">
-            Contact us today to discuss how ECPORA assessments can help your institution 
-            create safer environments for students while supporting your educational mission.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="btn-lg bg-white text-evans-blue-500 hover:bg-slate-50 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105">
-              Schedule Campus Consultation
-              <School className="w-5 h-5 ml-2" />
-            </button>
-            <button className="btn-lg border-2 border-white text-white hover:bg-white hover:text-evans-blue-500 px-8 py-4 rounded-lg font-semibold transition-all duration-200">
-              Request Educational Proposal
-              <Phone className="w-5 h-5 ml-2" />
-            </button>
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Establish Educational Partnership
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Ready to enhance your institution's child protection practices while supporting your educational mission? Let's discuss how ECPORA assessments can serve your learning community.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-2xl shadow-xl p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Campus Assessment Request</h3>
+                <form className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Institution Name
+                    </label>
+                    <input 
+                      type="text" 
+                      className="input w-full"
+                      placeholder="School District / University / Learning Center"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Primary Contact
+                    </label>
+                    <input 
+                      type="text" 
+                      className="input w-full"
+                      placeholder="Superintendent / President / Director"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Contact Email
+                    </label>
+                    <input 
+                      type="email" 
+                      className="input w-full"
+                      placeholder="superintendent@district.edu"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Institution Type
+                    </label>
+                    <select className="input w-full">
+                      <option>K-12 School Districts</option>
+                      <option>Higher Education Institutions</option>
+                      <option>Early Childhood Centers</option>
+                      <option>Private/Independent Schools</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Educational Assessment Needs
+                    </label>
+                    <textarea 
+                      className="input w-full h-32"
+                      placeholder="Describe your institution's child protection assessment needs, student population, academic calendar considerations, and educational integration requirements..."
+                    ></textarea>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    className="w-full btn-evans text-center py-4"
+                  >
+                    Request Educational Assessment
+                  </button>
+                </form>
+              </div>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-4">Educational Partnership Benefits</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Academic mission integration</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">FERPA compliance assurance</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Education-friendly implementation</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Professional development credits</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-4">Education Contact</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">Education Line: (505) 555-0169</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <GraduationCap className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">education@evansnationalsafety.com</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Calendar className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">Response within 24 hours</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-evans-green/5 border border-evans-green/20 rounded-xl p-6">
+                  <h4 className="font-bold text-evans-green mb-2">Educational Partnership Investment</h4>
+                  <p className="text-sm text-slate-700">
+                    Investment varies based on institution size, student population, and academic integration needs. Education-friendly pricing and flexible payment terms aligned with academic budgets will be discussed during consultation.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-slate-900 text-white py-16">
-        <div className="container">
-          <div className="grid lg:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
+      <footer className="bg-slate-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-16 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
                   <img 
@@ -531,57 +576,40 @@ export default function EducationPage() {
                   />
                 </div>
                 <div>
-                  <div className="text-xl font-bold">Evans National Safety Group</div>
-                  <div className="text-evans-blue-400 font-medium">Education Solutions</div>
+                  <h3 className="text-xl font-bold">Evans National Safety Group</h3>
+                  <p className="text-slate-400">Education Solutions</p>
                 </div>
               </div>
-              <p className="text-slate-400 mb-6 leading-relaxed">
-                Supporting educational institutions nationwide with comprehensive ECPORA assessments 
-                that protect students while enhancing educational mission effectiveness. 27+ years of 
-                child protection expertise adapted for learning communities.
+              <p className="text-slate-300 mb-6 max-w-md">
+                Comprehensive ECPORA assessments for educational institutions. Academic mission integration with FERPA compliance and education-friendly implementation for safe learning environments.
               </p>
-              <div className="text-sm text-slate-400">
-                <div className="mb-2"><strong>FERPA Compliance:</strong> Full student privacy protection</div>
-                <div><strong>Professional Development:</strong> Continuing education integration available</div>
-              </div>
             </div>
 
-            {/* Education Services */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Education Services</h3>
+              <h4 className="text-lg font-semibold mb-4">Education Services</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">K-12 District Assessments</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Higher Education Solutions</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Early Childhood Programs</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Campus Safety Integration</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Staff Training & Development</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">K-12 School Districts</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">Higher Education</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">Early Childhood Centers</a></li>
+                <li><a href="#compliance" className="text-slate-400 hover:text-white transition-colors">Educational Compliance</a></li>
               </ul>
             </div>
 
-            {/* Education Support */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Education Support</h3>
+              <h4 className="text-lg font-semibold mb-4">Educational Resources</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Academic Calendar Planning</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Grant Application Support</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Board Presentation Materials</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">FERPA Compliance Guide</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Professional Development</a></li>
+                <li><a href="/" className="text-slate-400 hover:text-white transition-colors">ECPORA Assessments</a></li>
+                <li><a href="/government" className="text-slate-400 hover:text-white transition-colors">Government Solutions</a></li>
+                <li><a href="/nonprofit" className="text-slate-400 hover:text-white transition-colors">Non-Profit Partnerships</a></li>
+                <li><a href="#contact" className="text-slate-400 hover:text-white transition-colors">Campus Consultation</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-slate-800 pt-8 mt-12">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="text-slate-400 text-sm mb-4 md:mb-0">
-                © 2025 Evans National Safety Group. All rights reserved. | Educational Institution Specialists
-              </div>
-              <div className="flex space-x-6">
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">FERPA Compliance</a>
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-              </div>
-            </div>
+          <div className="border-t border-slate-800 mt-12 pt-8 text-center">
+            <p className="text-slate-400">
+              © 2025 Evans National Safety Group LLC. All rights reserved. | Educational Child Protection Solutions
+            </p>
           </div>
         </div>
       </footer>
