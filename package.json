@@ -1,0 +1,87 @@
+{
+  "name": "evans-website",
+  "version": "1.0.0",
+  "description": "Evans National Safety Group - Marketing website and customer-facing portal showcasing the ECPORA platform ecosystem",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build && next export",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next out",
+    "analyze": "ANALYZE=true npm run build"
+  },
+  "dependencies": {
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.5.3",
+    "tailwindcss": "^3.4.6",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "lucide-react": "^0.263.1",
+    "framer-motion": "^11.3.8",
+    "next-themes": "^0.3.0",
+    "react-hook-form": "^7.52.1",
+    "zod": "^3.23.8",
+    "@hookform/resolvers": "^3.7.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.4.0",
+    "react-intersection-observer": "^9.13.0",
+    "embla-carousel-react": "^8.1.7",
+    "react-countup": "^6.5.3",
+    "react-parallax-tilt": "^1.7.235",
+    "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
+    "@radix-ui/react-navigation-menu": "^1.2.0",
+    "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "date-fns": "^3.6.0",
+    "react-hot-toast": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@next/bundle-analyzer": "^14.2.5",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/aspect-ratio": "^0.4.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "Evans National Safety Group",
+    "ECPORA",
+    "child protection",
+    "assessment platform",
+    "enterprise software",
+    "compliance",
+    "FedRAMP",
+    "government solutions",
+    "AI assessment",
+    "Next.js",
+    "marketing website"
+  ],
+  "author": "Evans National Safety Group",
+  "license": "PROPRIETARY",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evans-national-safety-group/evans-website"
+  },
+  "bugs": {
+    "url": "https://github.com/evans-national-safety-group/evans-website/issues"
+  },
+  "homepage": "https://evansnationalsafety.com"
+}
