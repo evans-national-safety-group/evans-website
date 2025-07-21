@@ -18,433 +18,554 @@ import {
   Phone,
   Calendar,
   AlertTriangle,
+  Target,
+  TrendingUp,
   Eye,
-  Database,
-  CheckSquare,
-  Flag,
-  Scale,
+  UserCheck,
   Menu,
   X
 } from 'lucide-react'
 
 export default function GovernmentPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [activeTab, setActiveTab] = useState('federal')
 
+  // Header scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const header = document.querySelector('.header')
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('bg-white/95', 'backdrop-blur-md', 'border-b', 'border-slate-200')
+          header.classList.remove('bg-white')
+        } else {
+          header.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-b', 'border-slate-200')
+          header.classList.add('bg-white')
+        }
+      }
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const governmentFeatures = [
+  const governmentServices = [
     {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Government-Grade Security",
-      description: "Enterprise security controls meeting federal standards with comprehensive audit trails and data protection protocols."
+      name: "Federal Agencies",
+      description: "Comprehensive ECPORA assessments for federal departments and multi-agency initiatives",
+      features: [
+        "Federal contracting capabilities",
+        "Multi-agency coordination protocols",
+        "Congressional reporting standards",
+        "Federal compliance frameworks",
+        "Interagency collaboration tools",
+        "National policy alignment"
+      ],
+      highlighted: false,
+      cta: "Request Federal Proposal"
     },
     {
-      icon: <FileText className="w-8 h-8" />,
-      title: "Regulatory Compliance",
-      description: "Built-in compliance frameworks ensuring adherence to federal, state, and local child protection regulations."
+      name: "State & Regional Agencies",
+      description: "Coordinated assessments for state departments and regional government partnerships",
+      features: [
+        "All Federal Agency benefits",
+        "Multi-state coordination",
+        "Regional policy development",
+        "State-specific compliance",
+        "Legislative alignment support",
+        "Cross-jurisdiction protocols",
+        "Governor office briefings",
+        "State budget integration"
+      ],
+      highlighted: true,
+      cta: "Schedule State Consultation"
     },
     {
-      icon: <Scale className="w-8 h-8" />,
-      title: "Evidence-Based Methodology",
-      description: "ECPORA framework validated through 27+ years of child protection expertise and government agency implementations."
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: "Comprehensive Reporting",
-      description: "Executive-level reporting with detailed analytics for oversight, performance measurement, and stakeholder communication."
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Multi-Agency Coordination", 
-      description: "Seamless collaboration tools enabling coordination across departments, jurisdictions, and partner organizations."
-    },
-    {
-      icon: <AlertTriangle className="w-8 h-8" />,
-      title: "Risk Assessment & Mitigation",
-      description: "Advanced risk identification and prioritization with actionable recommendations for immediate implementation."
-    }
-  ]
-
-  const governmentBenefits = [
-    {
-      metric: "Regulatory Compliance",
-      description: "100% compliance with applicable federal and state child protection standards",
-      icon: <CheckSquare className="w-6 h-6" />
-    },
-    {
-      metric: "Implementation Speed",
-      description: "30-90 day assessment and recommendation implementation",
-      icon: <Clock className="w-6 h-6" />
-    },
-    {
-      metric: "Cost Effectiveness", 
-      description: "Significant ROI through improved efficiency and risk reduction",
-      icon: <BarChart3 className="w-6 h-6" />
-    },
-    {
-      metric: "Stakeholder Confidence",
-      description: "Enhanced public trust through transparent assessment process",
-      icon: <Flag className="w-6 h-6" />
+      name: "Local Government",
+      description: "Tailored assessments for municipalities, counties, and local government entities",
+      features: [
+        "All State & Regional benefits",
+        "Community stakeholder engagement",
+        "Local policy development",
+        "Municipal compliance support",
+        "Council presentation materials",
+        "Public transparency protocols",
+        "Media communication support",
+        "Community partnership facilitation",
+        "Local budget considerations",
+        "Citizen engagement strategies"
+      ],
+      highlighted: false,
+      cta: "Begin Local Partnership"
     }
   ]
 
   const complianceStandards = [
-    { name: "Federal Standards", description: "Compliance with federal child protection regulations" },
-    { name: "State Regulations", description: "Adherence to state-specific requirements and protocols" },
-    { name: "Data Security", description: "Government-grade data protection and privacy controls" },
-    { name: "Audit Readiness", description: "Comprehensive documentation and audit trail systems" },
-    { name: "Multi-Jurisdiction", description: "Coordination across multiple governmental levels" },
-    { name: "Public Accountability", description: "Transparent reporting for public oversight" }
+    {
+      standard: "Federal Regulations",
+      requirements: "Federal Information Security Management Act (FISMA), Federal Risk Authorization and Management Program (FedRAMP)",
+      scope: "Contact for compliance details",
+      timeline: "3-12 months based on agency requirements"
+    },
+    {
+      standard: "State Compliance",
+      requirements: "State-specific child protection regulations, mandatory reporting protocols, legislative requirements",
+      scope: "Contact for state-specific frameworks",
+      timeline: "2-8 months based on state complexity"
+    },
+    {
+      standard: "Data Security",
+      requirements: "NIST Cybersecurity Framework, SOC 2 Type II, encryption standards, audit trails",
+      scope: "Contact for security assessment",
+      timeline: "Ongoing monitoring and reporting"
+    },
+    {
+      standard: "Audit Readiness",
+      requirements: "Government Accountability Office (GAO) standards, Inspector General requirements, transparency protocols",
+      scope: "Contact for audit preparation",
+      timeline: "Continuous compliance maintenance"
+    }
+  ]
+
+  const governmentOutcomes = [
+    {
+      metric: "Regulatory Compliance",
+      description: "Full adherence to federal, state, and local child protection regulations",
+      icon: Shield
+    },
+    {
+      metric: "Public Accountability", 
+      description: "Transparent, evidence-based practices that maintain public trust and confidence",
+      icon: Eye
+    },
+    {
+      metric: "Operational Efficiency",
+      description: "Streamlined processes that maximize taxpayer value and program effectiveness",
+      icon: TrendingUp
+    },
+    {
+      metric: "Multi-Agency Coordination",
+      description: "Enhanced collaboration across government departments and jurisdictions",
+      icon: Building2
+    }
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-evans-cream-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}>
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+      <header className="header fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-16 h-12 bg-white/95 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
+              <div className="w-16 h-12 bg-slate-50 rounded-lg flex items-center justify-center px-2">
                 <img 
                   src="/images/evans-logo.png" 
                   alt="Evans National Safety Group" 
                   className="h-8 w-auto"
                 />
               </div>
-              <div>
-                <div className="text-xl font-bold text-slate-900">Evans National Safety Group</div>
-                <div className="text-sm text-evans-blue-500 font-medium">Government Solutions</div>
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold text-slate-800">Evans National Safety Group</h1>
+                <p className="text-sm text-slate-600">Government Solutions</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <a href="/" className="nav-link">Home</a>
-              <a href="#solutions" className="nav-link">Solutions</a>
-              <a href="#compliance" className="nav-link">Compliance</a>
-              <a href="#process" className="nav-link">Process</a>
-              <a href="#contact" className="nav-link">Contact</a>
-              <button className="btn-primary">
-                Request Assessment Proposal
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="/" className="text-slate-700 hover:text-evans-blue transition-colors">Home</a>
+              <a href="/#services" className="text-slate-700 hover:text-evans-blue transition-colors">Services</a>
+              <a href="/#about" className="text-slate-700 hover:text-evans-blue transition-colors">About</a>
+              <a href="/#contact" className="text-slate-700 hover:text-evans-blue transition-colors">Contact</a>
+              <a 
+                href="#assessment" 
+                className="btn-evans"
+              >
+                Request Assessment
+              </a>
+            </nav>
 
-            {/* Mobile Menu Button */}
-            <button 
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100"
+            {/* Mobile menu button */}
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden rounded-md p-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="lg:hidden bg-white border-t border-slate-200">
-              <div className="px-4 py-6 space-y-4">
-                <a href="/" className="block py-2 text-slate-600 hover:text-evans-blue-500">Home</a>
-                <a href="#solutions" className="block py-2 text-slate-600 hover:text-evans-blue-500">Solutions</a>
-                <a href="#compliance" className="block py-2 text-slate-600 hover:text-evans-blue-500">Compliance</a>
-                <a href="#process" className="block py-2 text-slate-600 hover:text-evans-blue-500">Process</a>
-                <a href="#contact" className="block py-2 text-slate-600 hover:text-evans-blue-500">Contact</a>
-                <button className="btn-primary w-full">
-                  Request Assessment Proposal
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
-              </div>
-            </div>
-          )}
         </div>
-      </nav>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="/" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Home</a>
+              <a href="/#services" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Services</a>
+              <a href="/#about" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">About</a>
+              <a href="/#contact" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Contact</a>
+              <a href="#assessment" className="block px-3 py-2 rounded-md btn-evans">Request Assessment</a>
+            </div>
+          </div>
+        )}
+      </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-hero-gradient text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-8 animate-fade-in-down">
-              <Flag className="w-4 h-4 mr-2" />
-              Trusted by Federal and State Agencies Nationwide
+      <section className="pt-20 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-evans-blue/10 rounded-full text-evans-blue text-sm font-medium mb-6">
+              <Shield className="w-4 h-4 mr-2" />
+              Trusted Government Partner
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-              Government-Trusted{' '}
-              <span className="text-gradient bg-gradient-to-r from-evans-green-400 to-evans-orange-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800 mb-6 leading-tight">
+              Government-Grade
+              <span className="block text-evans-blue">
                 Child Protection
-              </span>{' '}
-              Assessments
+              </span>
+              <span className="block text-slate-600">
+                Excellence
+              </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
-              Evans National Safety Group delivers comprehensive ECPORA assessments designed specifically 
-              for government agencies, ensuring regulatory compliance, transparency, and measurable outcomes 
-              in child protection services.
+            <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+              ECPORA assessments designed for federal, state, and local government agencies. 
+              Evidence-based methodology with full regulatory compliance and transparent public accountability.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up">
-              <button className="btn-primary btn-lg group">
-                Request Federal Contract Proposal
-                <FileText className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
-              </button>
-              <button className="btn-secondary btn-lg text-white border-white hover:bg-white hover:text-slate-900">
-                Government Capability Statement
-                <Building2 className="w-5 h-5 ml-2" />
-              </button>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <a 
+                href="#assessment" 
+                className="bg-evans-blue hover:bg-evans-blue/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center group"
+              >
+                Request Government Assessment
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a 
+                href="#compliance" 
+                className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+              >
+                View Compliance Framework
+              </a>
             </div>
 
-            {/* Government Benefits */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up">
-              {governmentBenefits.map((benefit, index) => (
-                <div key={index} className="text-center">
-                  <div className="flex justify-center mb-2">
-                    <div className="p-3 bg-white/10 backdrop-blur-sm rounded-lg">
-                      {benefit.icon}
+            {/* Government Success Metrics */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              {governmentOutcomes.map((outcome, index) => {
+                const Icon = outcome.icon
+                return (
+                  <div key={index} className="text-center">
+                    <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Icon className="w-6 h-6 text-evans-blue" />
+                    </div>
+                    <h3 className="text-slate-800 font-semibold mb-1">{outcome.metric}</h3>
+                    <p className="text-slate-600 text-sm">{outcome.description}</p>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Government Services */}
+      <section id="assessment" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Government Child Protection 
+              <span className="text-evans-blue block">Assessment Solutions</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Comprehensive ECPORA assessments tailored for government agencies at all levels. Investment varies based on agency scope, multi-jurisdiction requirements, and compliance complexity. Contact us to discuss government contracting and proposal development.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {governmentServices.map((service, index) => (
+              <div 
+                key={index} 
+                className={`relative rounded-2xl p-8 transition-all duration-300 hover:scale-105 ${
+                  service.highlighted 
+                    ? 'bg-evans-blue text-white shadow-2xl border-2 border-evans-blue' 
+                    : 'bg-white border-2 border-slate-200 hover:border-evans-blue shadow-lg hover:shadow-xl'
+                }`}
+              >
+                {service.highlighted && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-evans-orange text-white px-4 py-2 rounded-full text-sm font-semibold">
+                      Most Requested
                     </div>
                   </div>
-                  <div className="text-lg font-bold mb-1">{benefit.metric}</div>
-                  <div className="text-slate-300 text-sm">{benefit.description}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Government Solutions */}
-      <section id="solutions" className="section bg-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-blue-50 text-evans-blue-600 rounded-full text-sm font-medium mb-4">
-              <Building2 className="w-4 h-4 mr-2" />
-              Government Solutions
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Built for Government Excellence
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our ECPORA methodology is specifically designed to meet the unique challenges, 
-              regulatory requirements, and accountability standards of government agencies.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {governmentFeatures.map((feature, index) => (
-              <div key={index} className="card-hover p-8 group">
-                <div className="flex items-center justify-center w-16 h-16 bg-evans-gradient rounded-2xl text-white mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-900">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Compliance Standards */}
-      <section id="compliance" className="section bg-slate-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-medium mb-4">
-              <Lock className="w-4 h-4 mr-2" />
-              Regulatory Compliance
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Meeting Government Standards
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our comprehensive approach ensures full compliance with federal, state, and local 
-              regulations while providing the transparency and accountability government agencies require.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {complianceStandards.map((standard, index) => (
-              <div key={index} className="card-hover p-6 text-center group">
-                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-slate-900">{standard.name}</h3>
-                <p className="text-slate-600 text-sm">{standard.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Government Process */}
-      <section id="process" className="section bg-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-green-50 text-evans-green-600 rounded-full text-sm font-medium mb-4">
-              <Clock className="w-4 h-4 mr-2" />
-              Assessment Process
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Streamlined for Government Efficiency
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our government assessment process is designed to minimize disruption while maximizing 
-              insight and value for your agency and the communities you serve.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                1
-              </div>
-              <h3 className="text-xl font-bold mb-4">Initial Consultation</h3>
-              <p className="text-slate-600">Confidential assessment of current capabilities, challenges, and regulatory requirements</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                2
-              </div>
-              <h3 className="text-xl font-bold mb-4">Comprehensive Review</h3>
-              <p className="text-slate-600">Detailed ECPORA assessment across all operational domains with stakeholder interviews</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                3
-              </div>
-              <h3 className="text-xl font-bold mb-4">Strategic Recommendations</h3>
-              <p className="text-slate-600">Prioritized action plan with timeline, budget considerations, and compliance roadmap</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-evans-slate-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                4
-              </div>
-              <h3 className="text-xl font-bold mb-4">Implementation Support</h3>
-              <p className="text-slate-600">Ongoing guidance and progress monitoring to ensure successful implementation</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Government Pricing */}
-      <section className="section bg-slate-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-orange-50 text-evans-orange-600 rounded-full text-sm font-medium mb-4">
-              <FileText className="w-4 h-4 mr-2" />
-              Government Investment
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Transparent Government Pricing
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We understand government budget processes and provide transparent, competitive pricing 
-              with flexible contracting options to meet your agency's procurement requirements.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="card-evans p-12 text-center">
-              <h3 className="text-3xl font-bold mb-6">Government Assessment Program</h3>
-              <div className="text-5xl font-bold text-evans-blue-500 mb-4">
-                Contact for Pricing
-              </div>
-              <p className="text-xl text-slate-600 mb-8">
-                Custom proposals based on agency size, scope, and specific requirements
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <div className="text-left">
-                  <h4 className="text-lg font-bold mb-4">Assessment Includes:</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>Comprehensive ECPORA Evaluation</span>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>Regulatory Compliance Review</span>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>Executive Presentation</span>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>Implementation Roadmap</span>
-                    </div>
-                  </div>
-                </div>
+                )}
                 
-                <div className="text-left">
-                  <h4 className="text-lg font-bold mb-4">Contracting Options:</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>Federal Contract Vehicles</span>
+                <div className="text-center mb-8">
+                  <h3 className={`text-2xl font-bold mb-3 ${service.highlighted ? 'text-white' : 'text-slate-800'}`}>
+                    {service.name}
+                  </h3>
+                  <div className="mb-4">
+                    <div className={`text-lg font-semibold px-4 py-2 rounded-lg inline-block ${
+                      service.highlighted 
+                        ? 'bg-white/10 text-white' 
+                        : 'bg-evans-blue/10 text-evans-blue'
+                    }`}>
+                      Contact for Proposal
                     </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>State Procurement Compliance</span>
+                  </div>
+                  <p className={`${service.highlighted ? 'text-slate-200' : 'text-slate-600'}`}>
+                    {service.description}
+                  </p>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start space-x-3">
+                      <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                        service.highlighted ? 'text-evans-green' : 'text-evans-green'
+                      }`} />
+                      <span className={`${service.highlighted ? 'text-white' : 'text-slate-700'}`}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a 
+                  href="#contact" 
+                  className={`w-full py-4 px-6 rounded-xl font-semibold text-center transition-all duration-300 block ${
+                    service.highlighted
+                      ? 'bg-white text-evans-blue hover:bg-slate-100'
+                      : 'bg-evans-blue text-white hover:bg-evans-blue/90'
+                  }`}
+                >
+                  {service.cta}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Compliance Framework */}
+      <section id="compliance" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Government Compliance 
+              <span className="text-evans-blue block">Framework & Standards</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              ECPORA assessments meet all federal, state, and local regulatory requirements. Our comprehensive compliance framework ensures full adherence to government standards and audit requirements.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {complianceStandards.map((compliance, index) => (
+              <div key={index} className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-6 h-6 text-evans-blue" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-800 mb-3">{compliance.standard}</h3>
+                    <p className="text-slate-600 mb-3">{compliance.requirements}</p>
+                    <div className="bg-evans-blue/5 border-l-4 border-evans-blue rounded-r-lg p-4 mb-3">
+                      <p className="text-sm text-slate-700"><strong>Scope:</strong> {compliance.scope}</p>
                     </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>Multi-Year Service Agreements</span>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span>Emergency Response Provisions</span>
-                    </div>
+                    <p className="text-sm text-slate-600"><strong>Timeline:</strong> {compliance.timeline}</p>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <button className="btn-primary btn-lg">
-                Request Government Proposal
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </button>
+      {/* Government Value Proposition */}
+      <section className="py-20 bg-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-slate-800">
+            <h2 className="text-4xl font-bold mb-6">
+              Government Partnership Value
+            </h2>
+            <p className="text-xl text-slate-600 mb-12 max-w-3xl mx-auto">
+              Comprehensive child protection assessments that enhance public accountability, ensure regulatory compliance, and demonstrate responsible stewardship of taxpayer resources.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8 text-evans-blue" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Regulatory Excellence</h3>
+                <p className="text-slate-600">
+                  Full compliance with federal, state, and local regulations ensuring audit readiness and public accountability.
+                </p>
+              </div>
+
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-evans-blue" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Operational Efficiency</h3>
+                <p className="text-slate-600">
+                  Streamlined processes and evidence-based practices that maximize program effectiveness and taxpayer value.
+                </p>
+              </div>
+
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Building2 className="w-8 h-8 text-evans-blue" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Multi-Agency Coordination</h3>
+                <p className="text-slate-600">
+                  Enhanced collaboration across departments and jurisdictions for comprehensive child protection coverage.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="section bg-evans-gradient text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Strengthen Your Agency's Child Protection Capabilities?
-          </h2>
-          <p className="text-xl text-slate-200 mb-12 max-w-3xl mx-auto">
-            Contact us today to discuss your agency's specific needs and learn how ECPORA assessments 
-            can help you achieve your child protection goals while ensuring regulatory compliance.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="btn-lg bg-white text-evans-blue-500 hover:bg-slate-50 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105">
-              Schedule Confidential Consultation
-              <Calendar className="w-5 h-5 ml-2" />
-            </button>
-            <button className="btn-lg border-2 border-white text-white hover:bg-white hover:text-evans-blue-500 px-8 py-4 rounded-lg font-semibold transition-all duration-200">
-              Request Capability Statement
-              <Phone className="w-5 h-5 ml-2" />
-            </button>
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Establish Government Partnership
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Ready to enhance your agency's child protection practices? Let's discuss how ECPORA assessments can meet your regulatory requirements and serve your constituents effectively.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-2xl shadow-xl p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Government Assessment Request</h3>
+                <form className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Agency Name
+                    </label>
+                    <input 
+                      type="text" 
+                      className="input w-full"
+                      placeholder="Department/Agency name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Primary Contact
+                    </label>
+                    <input 
+                      type="text" 
+                      className="input w-full"
+                      placeholder="Director / Administrator"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Official Email
+                    </label>
+                    <input 
+                      type="email" 
+                      className="input w-full"
+                      placeholder="director@agency.gov"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Government Level
+                    </label>
+                    <select className="input w-full">
+                      <option>Federal Agencies</option>
+                      <option>State & Regional Agencies</option>
+                      <option>Local Government</option>
+                      <option>Multi-jurisdiction Partnership</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Assessment Requirements
+                    </label>
+                    <textarea 
+                      className="input w-full h-32"
+                      placeholder="Describe your agency's child protection assessment needs, compliance requirements, and any specific government contracting considerations..."
+                    ></textarea>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    className="w-full btn-evans text-center py-4"
+                  >
+                    Request Government Assessment Proposal
+                  </button>
+                </form>
+              </div>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-4">Government Partnership Benefits</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Full regulatory compliance</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Government contracting experience</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Public accountability standards</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Multi-agency coordination</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-4">Government Contact</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">Government Line: (505) 555-0179</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Building2 className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">government@evansnationalsafety.com</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Calendar className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">Priority response within 24 hours</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-evans-blue/5 border border-evans-blue/20 rounded-xl p-6">
+                  <h4 className="font-bold text-evans-blue mb-2">Government Partnership Investment</h4>
+                  <p className="text-sm text-slate-700">
+                    Investment varies based on agency scope, multi-jurisdiction requirements, and compliance complexity. Government contracting terms and competitive pricing will be discussed during your consultation.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-slate-900 text-white py-16">
-        <div className="container">
-          <div className="grid lg:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
+      <footer className="bg-slate-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-16 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
                   <img 
@@ -454,57 +575,40 @@ export default function GovernmentPage() {
                   />
                 </div>
                 <div>
-                  <div className="text-xl font-bold">Evans National Safety Group</div>
-                  <div className="text-evans-blue-400 font-medium">Government Solutions</div>
+                  <h3 className="text-xl font-bold">Evans National Safety Group</h3>
+                  <p className="text-slate-400">Government Solutions</p>
                 </div>
               </div>
-              <p className="text-slate-400 mb-6 leading-relaxed">
-                Trusted partner for government agencies nationwide, delivering comprehensive ECPORA 
-                assessments with 27+ years of child protection expertise, ensuring regulatory compliance, 
-                transparency, and measurable outcomes.
+              <p className="text-slate-300 mb-6 max-w-md">
+                Comprehensive ECPORA assessments for federal, state, and local government agencies. Regulatory compliance, public accountability, and evidence-based child protection excellence.
               </p>
-              <div className="text-sm text-slate-400">
-                <div className="mb-2"><strong>Federal Contracting:</strong> GSA Schedule Available</div>
-                <div><strong>Security Clearance:</strong> Available for Sensitive Assessments</div>
-              </div>
             </div>
 
-            {/* Government Services */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Government Services</h3>
+              <h4 className="text-lg font-semibold mb-4">Government Services</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Federal Agency Assessments</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">State Government Solutions</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Multi-Jurisdiction Coordination</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Compliance Consulting</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Emergency Response Planning</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">Federal Agencies</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">State & Regional</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">Local Government</a></li>
+                <li><a href="#compliance" className="text-slate-400 hover:text-white transition-colors">Compliance Framework</a></li>
               </ul>
             </div>
 
-            {/* Government Support */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Government Support</h3>
+              <h4 className="text-lg font-semibold mb-4">Government Resources</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Federal Capability Statement</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Contract Vehicles</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Procurement Support</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Compliance Documentation</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Security Protocols</a></li>
+                <li><a href="/" className="text-slate-400 hover:text-white transition-colors">ECPORA Assessments</a></li>
+                <li><a href="/enterprise" className="text-slate-400 hover:text-white transition-colors">Enterprise Solutions</a></li>
+                <li><a href="/education" className="text-slate-400 hover:text-white transition-colors">Education Partnerships</a></li>
+                <li><a href="#contact" className="text-slate-400 hover:text-white transition-colors">Government Consultation</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-slate-800 pt-8 mt-12">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="text-slate-400 text-sm mb-4 md:mb-0">
-                © 2025 Evans National Safety Group. All rights reserved. | Government Contracting Available
-              </div>
-              <div className="flex space-x-6">
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Security</a>
-              </div>
-            </div>
+          <div className="border-t border-slate-800 mt-12 pt-8 text-center">
+            <p className="text-slate-400">
+              © 2025 Evans National Safety Group LLC. All rights reserved. | Government Child Protection Solutions
+            </p>
           </div>
         </div>
       </footer>
