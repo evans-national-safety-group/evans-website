@@ -19,525 +19,554 @@ import {
   Calendar,
   TrendingUp,
   Target,
-  Briefcase,
-  DollarSign,
   Eye,
-  Database,
-  CheckSquare,
-  AlertTriangle,
-  Layers,
+  UserCheck,
+  Crown,
+  Briefcase,
   Menu,
   X
 } from 'lucide-react'
 
 export default function EnterprisePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [activeTab, setActiveTab] = useState('assessment')
 
+  // Header scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const header = document.querySelector('.header')
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('bg-white/95', 'backdrop-blur-md', 'border-b', 'border-slate-200')
+          header.classList.remove('bg-white')
+        } else {
+          header.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-b', 'border-slate-200')
+          header.classList.add('bg-white')
+        }
+      }
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const enterpriseFeatures = [
+  const enterpriseServices = [
     {
-      icon: <Target className="w-8 h-8" />,
-      title: "Enterprise Risk Management",
-      description: "Comprehensive risk assessment and mitigation strategies integrated with your existing enterprise risk management framework."
+      name: "Corporate Assessment",
+      description: "Comprehensive enterprise-wide child protection assessment and risk management framework",
+      features: [
+        "Enterprise risk assessment protocols",
+        "Multi-location coordination",
+        "Corporate governance integration",
+        "Executive dashboard analytics",
+        "Regulatory compliance framework",
+        "Brand protection strategies"
+      ],
+      highlighted: false,
+      cta: "Request Corporate Assessment"
     },
     {
-      icon: <Layers className="w-8 h-8" />,
-      title: "Multi-Location Coordination",
-      description: "Seamless assessment coordination across multiple facilities, divisions, and geographic locations with centralized reporting."
+      name: "Enterprise Partnership",
+      description: "Ongoing strategic partnership with dedicated account management and priority support",
+      features: [
+        "All Corporate Assessment benefits",
+        "Dedicated account management",
+        "Quarterly strategic reviews",
+        "Priority expert consultation",
+        "Board-level reporting",
+        "Multi-year planning support",
+        "Crisis response protocols",
+        "Industry best practices integration"
+      ],
+      highlighted: true,
+      cta: "Schedule Executive Consultation"
     },
     {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: "Executive Dashboard Analytics",
-      description: "Real-time insights and metrics designed for C-suite visibility with customizable KPIs and performance indicators."
-    },
-    {
-      icon: <Briefcase className="w-8 h-8" />,
-      title: "Business Continuity Integration",
-      description: "Child protection protocols that align with business continuity planning and operational resilience strategies."
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Global Compliance Framework", 
-      description: "Multi-jurisdictional compliance management supporting international operations and diverse regulatory environments."
-    },
-    {
-      icon: <DollarSign className="w-8 h-8" />,
-      title: "ROI Optimization",
-      description: "Measurable return on investment through improved efficiency, reduced liability, and enhanced brand protection."
+      name: "Global Enterprise Solution",
+      description: "Comprehensive multinational assessment and coordination for global corporate operations",
+      features: [
+        "All Enterprise Partnership benefits",
+        "Global multi-location coordination",
+        "International compliance frameworks",
+        "Cross-cultural assessment protocols",
+        "Global executive support",
+        "Multinational policy development",
+        "International crisis response",
+        "Global brand risk management",
+        "Regional expertise coordination",
+        "International regulatory guidance"
+      ],
+      highlighted: false,
+      cta: "Begin Global Partnership"
     }
   ]
 
-  const enterpriseMetrics = [
+  const industrySpecializations = [
     {
-      metric: "Risk Reduction",
-      description: "Measurable decrease in organizational liability exposure",
-      icon: <Shield className="w-6 h-6" />
+      industry: "Youth Sports Organizations",
+      challenges: "Athlete safety, coaching protocols, competitive environments, SafeSport compliance",
+      solutions: "Contact for sports-specific frameworks",
+      expertise: "27+ years SafeSport and athletic program experience"
     },
     {
-      metric: "Operational Efficiency",
-      description: "Streamlined processes and improved resource allocation",
-      icon: <Zap className="w-6 h-6" />
+      industry: "Entertainment & Media",
+      challenges: "Child performer protection, on-set safety, industry-specific regulations, talent management",
+      solutions: "Contact for entertainment industry solutions",
+      expertise: "Specialized entertainment industry protocols"
     },
     {
-      metric: "Brand Protection", 
-      description: "Enhanced reputation management and stakeholder confidence",
-      icon: <Award className="w-6 h-6" />
+      industry: "Healthcare Systems",
+      challenges: "Pediatric care protocols, family engagement, medical professional training, HIPAA compliance",
+      solutions: "Contact for healthcare assessment",
+      expertise: "Healthcare-specific child protection integration"
     },
     {
-      metric: "Compliance Automation",
-      description: "Reduced manual compliance oversight and reporting burden",
-      icon: <CheckSquare className="w-6 h-6" />
+      industry: "Technology Companies",
+      challenges: "Online safety, digital platform protection, content moderation, global compliance",
+      solutions: "Contact for technology sector solutions",
+      expertise: "Digital safety and technology platform expertise"
     }
   ]
 
-  const enterpriseSolutions = [
+  const enterpriseOutcomes = [
     {
-      title: "Fortune 1000 Corporations",
-      description: "Comprehensive enterprise-wide assessments",
-      features: ["Multi-division coordination", "Global compliance management", "Executive oversight integration"],
-      investment: "$500,000 - $1,000,000+",
-      timeline: "6-12 months"
+      metric: "Risk Mitigation",
+      description: "Comprehensive risk assessment and mitigation strategies protecting enterprise reputation",
+      icon: Shield
     },
     {
-      title: "Mid-Market Organizations", 
-      description: "Scalable solutions for growing companies",
-      features: ["Regional facility assessments", "Growth-oriented protocols", "Scalability planning"],
-      investment: "$200,000 - $500,000",
-      timeline: "3-6 months"
+      metric: "Operational Excellence", 
+      description: "Streamlined processes and protocols enhancing overall organizational efficiency",
+      icon: TrendingUp
     },
     {
-      title: "Industry-Specific Solutions",
-      description: "Specialized assessments for high-risk sectors",
-      features: ["Sector-specific protocols", "Regulatory specialization", "Industry benchmarking"],
-      investment: "$300,000 - $750,000",
-      timeline: "4-8 months"
+      metric: "Competitive Advantage",
+      description: "Industry-leading child protection practices creating market differentiation",
+      icon: Crown
+    },
+    {
+      metric: "Stakeholder Confidence",
+      description: "Enhanced investor, customer, and employee confidence through transparent practices",
+      icon: Users
     }
-  ]
-
-  const enterpriseCompliance = [
-    { name: "Corporate Governance", description: "Board-level oversight and accountability frameworks" },
-    { name: "Risk Management", description: "Enterprise risk assessment and mitigation protocols" },
-    { name: "Regulatory Compliance", description: "Multi-jurisdictional regulatory requirement management" },
-    { name: "Data Security", description: "Enterprise-grade data protection and privacy controls" },
-    { name: "Audit Readiness", description: "Comprehensive documentation and audit trail systems" },
-    { name: "Brand Protection", description: "Reputation management and crisis communication planning" }
-  ]
-
-  const industryFocus = [
-    { sector: "Youth Sports Organizations", risk: "High", specialization: "SafeSport compliance and athlete protection" },
-    { sector: "Entertainment & Media", risk: "High", specialization: "Talent protection and production safety" },
-    { sector: "Healthcare Systems", risk: "Medium", specialization: "Patient safety and staff protocols" },
-    { sector: "Technology Companies", risk: "Medium", specialization: "Workplace safety and online protection" },
-    { sector: "Retail & Hospitality", risk: "Medium", specialization: "Customer and employee safety protocols" },
-    { sector: "Financial Services", risk: "Low", specialization: "Client interaction and facility security" }
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-evans-cream-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}>
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+      <header className="header fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-16 h-12 bg-white/95 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
+              <div className="w-16 h-12 bg-slate-50 rounded-lg flex items-center justify-center px-2">
                 <img 
                   src="/images/evans-logo.png" 
                   alt="Evans National Safety Group" 
                   className="h-8 w-auto"
                 />
               </div>
-              <div>
-                <div className="text-xl font-bold text-slate-900">Evans National Safety Group</div>
-                <div className="text-sm text-evans-blue-500 font-medium">Enterprise Solutions</div>
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold text-slate-800">Evans National Safety Group</h1>
+                <p className="text-sm text-slate-600">Enterprise Solutions</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <a href="/" className="nav-link">Home</a>
-              <a href="#solutions" className="nav-link">Solutions</a>
-              <a href="#industries" className="nav-link">Industries</a>
-              <a href="#investment" className="nav-link">Investment</a>
-              <a href="#contact" className="nav-link">Contact</a>
-              <button className="btn-primary">
-                Executive Consultation Request
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="/" className="text-slate-700 hover:text-evans-blue transition-colors">Home</a>
+              <a href="/#services" className="text-slate-700 hover:text-evans-blue transition-colors">Services</a>
+              <a href="/#about" className="text-slate-700 hover:text-evans-blue transition-colors">About</a>
+              <a href="/#contact" className="text-slate-700 hover:text-evans-blue transition-colors">Contact</a>
+              <a 
+                href="#assessment" 
+                className="btn-evans"
+              >
+                Request Assessment
+              </a>
+            </nav>
 
-            {/* Mobile Menu Button */}
-            <button 
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100"
+            {/* Mobile menu button */}
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden rounded-md p-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="lg:hidden bg-white border-t border-slate-200">
-              <div className="px-4 py-6 space-y-4">
-                <a href="/" className="block py-2 text-slate-600 hover:text-evans-blue-500">Home</a>
-                <a href="#solutions" className="block py-2 text-slate-600 hover:text-evans-blue-500">Solutions</a>
-                <a href="#industries" className="block py-2 text-slate-600 hover:text-evans-blue-500">Industries</a>
-                <a href="#investment" className="block py-2 text-slate-600 hover:text-evans-blue-500">Investment</a>
-                <a href="#contact" className="block py-2 text-slate-600 hover:text-evans-blue-500">Contact</a>
-                <button className="btn-primary w-full">
-                  Executive Consultation Request
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
-              </div>
-            </div>
-          )}
         </div>
-      </nav>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="/" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Home</a>
+              <a href="/#services" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Services</a>
+              <a href="/#about" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">About</a>
+              <a href="/#contact" className="block px-3 py-2 rounded-md text-slate-700 hover:text-evans-blue hover:bg-slate-50">Contact</a>
+              <a href="#assessment" className="block px-3 py-2 rounded-md btn-evans">Request Assessment</a>
+            </div>
+          </div>
+        )}
+      </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-hero-gradient text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-8 animate-fade-in-down">
-              <Building2 className="w-4 h-4 mr-2" />
-              Enterprise Risk Management Solutions
+      <section className="pt-20 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-evans-blue/10 rounded-full text-evans-blue text-sm font-medium mb-6">
+              <Briefcase className="w-4 h-4 mr-2" />
+              Enterprise Child Protection Excellence
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-              Enterprise{' '}
-              <span className="text-gradient bg-gradient-to-r from-evans-green-400 to-evans-orange-400 bg-clip-text text-transparent">
-                Child Protection
-              </span>{' '}
-              Excellence
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800 mb-6 leading-tight">
+              Enterprise-Grade
+              <span className="block text-evans-blue">
+                Risk Management
+              </span>
+              <span className="block text-slate-600">
+                Solutions
+              </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
-              Evans National Safety Group delivers comprehensive enterprise-grade ECPORA assessments 
-              that integrate child protection excellence with business continuity, risk management, 
-              and operational efficiency for Fortune 1000 and growing companies.
+            <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+              ECPORA assessments designed for Fortune 1000 corporations and mid-market enterprises. 
+              Comprehensive risk management with industry-specific expertise and C-suite strategic partnership for competitive advantage.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up">
-              <button className="btn-primary btn-lg group">
-                Executive Consultation Request
-                <Briefcase className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
-              </button>
-              <button className="btn-secondary btn-lg text-white border-white hover:bg-white hover:text-slate-900">
-                Enterprise Capability Overview
-                <TrendingUp className="w-5 h-5 ml-2" />
-              </button>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <a 
+                href="#assessment" 
+                className="bg-evans-blue hover:bg-evans-blue/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center group"
+              >
+                Request Enterprise Assessment
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a 
+                href="#industries" 
+                className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+              >
+                Industry Specializations
+              </a>
             </div>
 
-            {/* Enterprise Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up">
-              {enterpriseMetrics.map((metric, index) => (
-                <div key={index} className="text-center">
-                  <div className="flex justify-center mb-2">
-                    <div className="p-3 bg-white/10 backdrop-blur-sm rounded-lg">
-                      {metric.icon}
+            {/* Enterprise Success Metrics */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              {enterpriseOutcomes.map((outcome, index) => {
+                const Icon = outcome.icon
+                return (
+                  <div key={index} className="text-center">
+                    <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Icon className="w-6 h-6 text-evans-blue" />
                     </div>
+                    <h3 className="text-slate-800 font-semibold mb-1">{outcome.metric}</h3>
+                    <p className="text-slate-600 text-sm">{outcome.description}</p>
                   </div>
-                  <div className="text-lg font-bold mb-1">{metric.metric}</div>
-                  <div className="text-slate-300 text-sm">{metric.description}</div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enterprise Solutions */}
-      <section id="solutions" className="section bg-white">
-        <div className="container">
+      {/* Enterprise Services */}
+      <section id="assessment" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-blue-50 text-evans-blue-600 rounded-full text-sm font-medium mb-4">
-              <Target className="w-4 h-4 mr-2" />
-              Enterprise Solutions
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Built for Enterprise Excellence
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Enterprise Child Protection 
+              <span className="text-evans-blue block">Assessment Solutions</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our ECPORA methodology scales to meet the complex needs of enterprise organizations, 
-              integrating seamlessly with existing risk management and operational frameworks.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {enterpriseFeatures.map((feature, index) => (
-              <div key={index} className="card-hover p-8 group">
-                <div className="flex items-center justify-center w-16 h-16 bg-evans-gradient rounded-2xl text-white mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-900">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industry Focus */}
-      <section id="industries" className="section bg-slate-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-green-50 text-evans-green-600 rounded-full text-sm font-medium mb-4">
-              <Layers className="w-4 h-4 mr-2" />
-              Industry Specialization
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Sector-Specific Expertise
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our enterprise assessments are tailored to the unique risks, regulations, 
-              and operational requirements of different industry sectors.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-6">
-            {industryFocus.map((industry, index) => (
-              <div key={index} className="card-hover p-6 flex items-center justify-between">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2">{industry.sector}</h3>
-                  <p className="text-slate-600 text-sm">{industry.specialization}</p>
-                </div>
-                <div className="ml-6 text-center">
-                  <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    industry.risk === 'High' ? 'bg-red-100 text-red-700' :
-                    industry.risk === 'Medium' ? 'bg-yellow-100 text-yellow-700' :
-                    'bg-green-100 text-green-700'
-                  }`}>
-                    {industry.risk} Risk
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enterprise Investment Tiers */}
-      <section id="investment" className="section bg-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-orange-50 text-evans-orange-600 rounded-full text-sm font-medium mb-4">
-              <DollarSign className="w-4 h-4 mr-2" />
-              Enterprise Investment
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Scalable Enterprise Solutions
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our enterprise packages are designed to deliver measurable ROI through risk reduction, 
-              operational efficiency, and brand protection across your entire organization.
+              Comprehensive ECPORA assessments for enterprise organizations. Investment varies based on corporate scope, multi-location requirements, and industry-specific needs. Contact us to discuss enterprise partnerships and executive consultation.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {enterpriseSolutions.map((solution, index) => (
-              <div key={index} className={`relative ${
-                index === 0 
-                  ? 'card-evans p-8 ring-4 ring-evans-blue-200 scale-105' 
-                  : 'card-hover p-8'
-              }`}>
-                {index === 0 && (
+            {enterpriseServices.map((service, index) => (
+              <div 
+                key={index} 
+                className={`relative rounded-2xl p-8 transition-all duration-300 hover:scale-105 ${
+                  service.highlighted 
+                    ? 'bg-evans-blue text-white shadow-2xl border-2 border-evans-blue' 
+                    : 'bg-white border-2 border-slate-200 hover:border-evans-blue shadow-lg hover:shadow-xl'
+                }`}
+              >
+                {service.highlighted && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-evans-gradient text-white px-6 py-2 rounded-full text-sm font-medium">
-                      Most Comprehensive
-                    </span>
+                    <div className="bg-evans-orange text-white px-4 py-2 rounded-full text-sm font-semibold">
+                      Most Requested
+                    </div>
                   </div>
                 )}
                 
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold mb-2">{solution.title}</h3>
-                  <p className="text-slate-600 mb-4">{solution.description}</p>
-                  <div className="text-3xl font-bold text-evans-blue-500 mb-2">
-                    {solution.investment}
-                  </div>
-                  <div className="text-sm text-slate-500">Timeline: {solution.timeline}</div>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  {solution.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-slate-700">{feature}</span>
+                  <h3 className={`text-2xl font-bold mb-3 ${service.highlighted ? 'text-white' : 'text-slate-800'}`}>
+                    {service.name}
+                  </h3>
+                  <div className="mb-4">
+                    <div className={`text-lg font-semibold px-4 py-2 rounded-lg inline-block ${
+                      service.highlighted 
+                        ? 'bg-white/10 text-white' 
+                        : 'bg-evans-blue/10 text-evans-blue'
+                    }`}>
+                      Contact for Enterprise Investment
                     </div>
+                  </div>
+                  <p className={`${service.highlighted ? 'text-slate-200' : 'text-slate-600'}`}>
+                    {service.description}
+                  </p>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start space-x-3">
+                      <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                        service.highlighted ? 'text-evans-green' : 'text-evans-green'
+                      }`} />
+                      <span className={`${service.highlighted ? 'text-white' : 'text-slate-700'}`}>
+                        {feature}
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <button className={`w-full ${
-                  index === 0 ? 'btn-primary' : 'btn-secondary'
-                }`}>
-                  Request Enterprise Proposal
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
+                <a 
+                  href="#contact" 
+                  className={`w-full py-4 px-6 rounded-xl font-semibold text-center transition-all duration-300 block ${
+                    service.highlighted
+                      ? 'bg-white text-evans-blue hover:bg-slate-100'
+                      : 'bg-evans-blue text-white hover:bg-evans-blue/90'
+                  }`}
+                >
+                  {service.cta}
+                </a>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Enterprise Compliance */}
-      <section className="section bg-slate-50">
-        <div className="container">
+      {/* Industry Specializations */}
+      <section id="industries" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-medium mb-4">
-              <Lock className="w-4 h-4 mr-2" />
-              Enterprise Compliance
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Comprehensive Risk Management
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Industry-Specific 
+              <span className="text-evans-blue block">Expertise & Solutions</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our enterprise approach integrates child protection with comprehensive risk management, 
-              regulatory compliance, and corporate governance frameworks.
+              Specialized ECPORA assessments tailored for high-risk industries requiring comprehensive child protection protocols and industry-specific compliance frameworks.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {enterpriseCompliance.map((standard, index) => (
-              <div key={index} className="card-hover p-6 text-center group">
-                <div className="w-16 h-16 bg-gradient-to-r from-evans-blue-500 to-evans-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Shield className="w-8 h-8 text-white" />
+          <div className="grid md:grid-cols-2 gap-8">
+            {industrySpecializations.map((industry, index) => (
+              <div key={index} className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Building2 className="w-6 h-6 text-evans-blue" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-800 mb-3">{industry.industry}</h3>
+                    <p className="text-slate-600 mb-3"><strong>Key Challenges:</strong> {industry.challenges}</p>
+                    <div className="bg-evans-blue/5 border-l-4 border-evans-blue rounded-r-lg p-4 mb-3">
+                      <p className="text-sm text-slate-700"><strong>Solutions:</strong> {industry.solutions}</p>
+                    </div>
+                    <p className="text-sm text-slate-600"><strong>Our Expertise:</strong> {industry.expertise}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-slate-900">{standard.name}</h3>
-                <p className="text-slate-600 text-sm">{standard.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Enterprise ROI */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Measurable Enterprise Value
+      {/* Enterprise Value Proposition */}
+      <section className="py-20 bg-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-slate-800">
+            <h2 className="text-4xl font-bold mb-6">
+              Enterprise Partnership Value
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our enterprise clients typically see significant ROI through risk reduction, 
-              operational efficiency, and enhanced brand protection.
+            <p className="text-xl text-slate-600 mb-12 max-w-3xl mx-auto">
+              Comprehensive child protection excellence that mitigates enterprise risk, enhances operational efficiency, and creates competitive advantage through industry-leading practices.
             </p>
-          </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-6 h-6 text-evans-blue-600" />
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8 text-evans-blue" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Risk Mitigation Value</h3>
-                  <p className="text-slate-600">Quantifiable reduction in organizational liability exposure and potential reputational damage</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-6 h-6 text-evans-green-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Operational Efficiency</h3>
-                  <p className="text-slate-600">Streamlined processes and improved resource allocation across multiple locations and divisions</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Award className="w-6 h-6 text-evans-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Brand Protection</h3>
-                  <p className="text-slate-600">Enhanced reputation management and stakeholder confidence through proactive risk management</p>
-                </div>
+                <h3 className="text-xl font-bold mb-3">Risk Mitigation</h3>
+                <p className="text-slate-600">
+                  Comprehensive risk assessment and mitigation strategies protecting enterprise reputation and reducing liability exposure.
+                </p>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-evans-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <BarChart3 className="w-6 h-6 text-evans-slate-600" />
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-evans-blue" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Competitive Advantage</h3>
-                  <p className="text-slate-600">Industry-leading child protection protocols that differentiate your organization in the marketplace</p>
-                </div>
+                <h3 className="text-xl font-bold mb-3">Operational Excellence</h3>
+                <p className="text-slate-600">
+                  Streamlined processes and evidence-based protocols enhancing overall organizational efficiency and performance.
+                </p>
               </div>
-            </div>
-            
-            <div className="text-center">
-              <div className="card-evans p-8">
-                <h3 className="text-2xl font-bold mb-4">Executive Partnership</h3>
-                <div className="text-4xl font-bold text-evans-blue-500 mb-4">Strategic Investment</div>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>C-suite strategic consultation</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>Board-level reporting and oversight</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>Multi-year strategic planning</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-evans-green-500 mr-3" />
-                    <span>Crisis response partnership</span>
-                  </div>
+
+              <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+                <div className="w-16 h-16 bg-evans-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Crown className="w-8 h-8 text-evans-blue" />
                 </div>
-                <button className="btn-primary w-full">
-                  Schedule Executive Meeting
-                  <Calendar className="w-4 h-4 ml-2" />
-                </button>
+                <h3 className="text-xl font-bold mb-3">Competitive Advantage</h3>
+                <p className="text-slate-600">
+                  Industry-leading child protection practices creating market differentiation and stakeholder confidence.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="section bg-evans-gradient text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Transform Your Enterprise Child Protection Strategy?
-          </h2>
-          <p className="text-xl text-slate-200 mb-12 max-w-3xl mx-auto">
-            Contact our executive team today to discuss how comprehensive ECPORA assessments 
-            can deliver measurable value for your organization while protecting what matters most.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="btn-lg bg-white text-evans-blue-500 hover:bg-slate-50 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105">
-              Schedule C-Suite Consultation
-              <Briefcase className="w-5 h-5 ml-2" />
-            </button>
-            <button className="btn-lg border-2 border-white text-white hover:bg-white hover:text-evans-blue-500 px-8 py-4 rounded-lg font-semibold transition-all duration-200">
-              Request Enterprise Proposal
-              <Phone className="w-5 h-5 ml-2" />
-            </button>
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              Establish Enterprise Partnership
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Ready to enhance your enterprise's child protection practices and mitigate organizational risk? Let's discuss how ECPORA assessments can create competitive advantage for your organization.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-2xl shadow-xl p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Enterprise Assessment Request</h3>
+                <form className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Company Name
+                    </label>
+                    <input 
+                      type="text" 
+                      className="input w-full"
+                      placeholder="Enterprise corporation name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Executive Contact
+                    </label>
+                    <input 
+                      type="text" 
+                      className="input w-full"
+                      placeholder="CEO / President / Chief Risk Officer"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Executive Email
+                    </label>
+                    <input 
+                      type="email" 
+                      className="input w-full"
+                      placeholder="executive@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Enterprise Type
+                    </label>
+                    <select className="input w-full">
+                      <option>Corporate Assessment</option>
+                      <option>Enterprise Partnership</option>
+                      <option>Global Enterprise Solution</option>
+                      <option>Industry-Specific Assessment</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Enterprise Assessment Requirements
+                    </label>
+                    <textarea 
+                      className="input w-full h-32"
+                      placeholder="Describe your enterprise's child protection assessment needs, risk management requirements, industry specialization, and executive partnership interests..."
+                    ></textarea>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    className="w-full btn-evans text-center py-4"
+                  >
+                    Request Enterprise Assessment
+                  </button>
+                </form>
+              </div>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-4">Enterprise Partnership Benefits</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Enterprise risk mitigation</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">C-suite strategic partnership</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Industry-specific expertise</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-evans-green" />
+                      <span className="text-slate-700">Competitive advantage creation</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-4">Enterprise Contact</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">Enterprise Line: (505) 555-0159</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Briefcase className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">enterprise@evansnationalsafety.com</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Calendar className="w-5 h-5 text-evans-blue" />
+                      <span className="text-slate-700">Priority response within 24 hours</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-evans-blue/5 border border-evans-blue/20 rounded-xl p-6">
+                  <h4 className="font-bold text-evans-blue mb-2">Enterprise Partnership Investment</h4>
+                  <p className="text-sm text-slate-700">
+                    Investment varies based on enterprise scope, industry requirements, and partnership level. Competitive enterprise pricing and flexible contract terms will be discussed during your executive consultation.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-slate-900 text-white py-16">
-        <div className="container">
-          <div className="grid lg:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
+      <footer className="bg-slate-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-16 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center px-2">
                   <img 
@@ -547,57 +576,40 @@ export default function EnterprisePage() {
                   />
                 </div>
                 <div>
-                  <div className="text-xl font-bold">Evans National Safety Group</div>
-                  <div className="text-evans-blue-400 font-medium">Enterprise Solutions</div>
+                  <h3 className="text-xl font-bold">Evans National Safety Group</h3>
+                  <p className="text-slate-400">Enterprise Solutions</p>
                 </div>
               </div>
-              <p className="text-slate-400 mb-6 leading-relaxed">
-                Strategic partner for enterprise organizations, delivering comprehensive ECPORA 
-                assessments that integrate child protection excellence with business continuity, 
-                risk management, and operational efficiency. 27+ years of expertise scaled for enterprise needs.
+              <p className="text-slate-300 mb-6 max-w-md">
+                Comprehensive ECPORA assessments for Fortune 1000 corporations and mid-market enterprises. Enterprise risk management with industry-specific expertise and C-suite strategic partnership.
               </p>
-              <div className="text-sm text-slate-400">
-                <div className="mb-2"><strong>Enterprise Contracts:</strong> $200K - $1M+ Investment Range</div>
-                <div><strong>Global Capabilities:</strong> Multi-jurisdictional assessment coordination</div>
-              </div>
             </div>
 
-            {/* Enterprise Services */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Enterprise Services</h3>
+              <h4 className="text-lg font-semibold mb-4">Enterprise Services</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Fortune 1000 Assessments</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Multi-Location Coordination</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Executive Dashboard Analytics</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Risk Management Integration</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Crisis Response Partnership</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">Corporate Assessment</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">Enterprise Partnership</a></li>
+                <li><a href="#assessment" className="text-slate-400 hover:text-white transition-colors">Global Solutions</a></li>
+                <li><a href="#industries" className="text-slate-400 hover:text-white transition-colors">Industry Specializations</a></li>
               </ul>
             </div>
 
-            {/* Enterprise Support */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Enterprise Support</h3>
+              <h4 className="text-lg font-semibold mb-4">Enterprise Resources</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">C-Suite Strategic Consultation</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Board-Level Reporting</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Multi-Year Planning</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">ROI Measurement</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Global Compliance</a></li>
+                <li><a href="/" className="text-slate-400 hover:text-white transition-colors">ECPORA Assessments</a></li>
+                <li><a href="/government" className="text-slate-400 hover:text-white transition-colors">Government Solutions</a></li>
+                <li><a href="/education" className="text-slate-400 hover:text-white transition-colors">Education Partnerships</a></li>
+                <li><a href="#contact" className="text-slate-400 hover:text-white transition-colors">Executive Consultation</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-slate-800 pt-8 mt-12">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="text-slate-400 text-sm mb-4 md:mb-0">
-                © 2025 Evans National Safety Group. All rights reserved. | Enterprise Partnership Solutions
-              </div>
-              <div className="flex space-x-6">
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Enterprise Terms</a>
-                <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Security</a>
-              </div>
-            </div>
+          <div className="border-t border-slate-800 mt-12 pt-8 text-center">
+            <p className="text-slate-400">
+              © 2025 Evans National Safety Group LLC. All rights reserved. | Enterprise Child Protection Solutions
+            </p>
           </div>
         </div>
       </footer>
