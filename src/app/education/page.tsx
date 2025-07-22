@@ -17,10 +17,9 @@ import {
   Clock,
   Phone,
   Calendar,
-  BookOpen,
   GraduationCap,
+  BookOpen,
   School,
-  Baby,
   Menu,
   X
 } from 'lucide-react'
@@ -39,45 +38,45 @@ export default function EducationPage() {
 
   const educationSolutions = [
     {
-      title: "K-12 School Assessment Program",
-      subtitle: "Comprehensive School Protection",
-      description: "Complete ECPORA assessments designed for elementary, middle, and high schools requiring comprehensive child protection frameworks.",
+      title: "Higher Education Program",
+      subtitle: "University & College Excellence",
+      description: "Comprehensive ECPORA assessments designed for universities, colleges, and higher education institutions with complex campus environments.",
       features: [
-        "Age-appropriate protection protocols",
-        "Student safety assessment frameworks",
-        "Staff training and certification guidance",
-        "Parent and community engagement strategies",
-        "School board compliance reporting"
+        "Multi-campus assessment coordination",
+        "Student life integration protocols",
+        "Athletic program safety frameworks",
+        "Research facility compliance",
+        "Title IX coordination strategies"
       ],
-      cta: "Request K-12 Assessment",
+      cta: "Request University Consultation",
       highlight: false
     },
     {
-      title: "Higher Education Program", 
-      subtitle: "Campus-Wide Protection Excellence",
-      description: "Specialized ECPORA assessments for colleges and universities managing complex campus environments and diverse student populations.",
+      title: "K-12 School District Program", 
+      subtitle: "Comprehensive District Solutions",
+      description: "District-wide ECPORA assessments for K-12 school systems requiring coordinated child protection across multiple schools and grade levels.",
       features: [
-        "Campus-wide safety protocols",
-        "Residence hall protection frameworks",
-        "Student services integration",
-        "Faculty and staff compliance training",
-        "Accreditation support documentation"
+        "District-wide policy standardization",
+        "Multi-school coordination protocols",
+        "Age-appropriate implementation strategies",
+        "Transportation safety integration",
+        "Community engagement frameworks"
       ],
-      cta: "Schedule Campus Consultation",
+      cta: "Schedule District Assessment",
       highlight: true
     },
     {
-      title: "Early Childhood Program",
-      subtitle: "Foundational Safety Excellence", 
-      description: "Specialized assessments for preschools, daycares, and early learning centers focused on the unique needs of young children.",
+      title: "Individual School Program",
+      subtitle: "School-Level Implementation", 
+      description: "Focused ECPORA assessments for individual schools seeking comprehensive child protection enhancement within their specific environment.",
       features: [
-        "Developmental-appropriate safety measures",
-        "Caregiver screening and training protocols",
-        "Family engagement and communication",
-        "Regulatory compliance for early childhood",
-        "Quality improvement planning"
+        "School-specific risk assessment",
+        "Classroom safety protocols",
+        "Staff training customization",
+        "Parent communication strategies",
+        "Student reporting systems"
       ],
-      cta: "Begin Early Childhood Partnership",
+      cta: "Begin School Partnership",
       highlight: false
     }
   ]
@@ -100,6 +99,7 @@ export default function EducationPage() {
               <a href="/" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Home</a>
               <a href="/#platform" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Platform</a>
               <a href="/#ecosystem" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Sectors</a>
+              <a href="/about" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>About</a>
               <a href="/#contact" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Contact</a>
               <a href="/executive-guidance" className="bg-evans-orange text-white px-4 py-2 rounded-lg hover:bg-evans-orange/90 transition-colors">Executive Guidance</a>
             </div>
@@ -122,6 +122,7 @@ export default function EducationPage() {
                 <a href="/" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Home</a>
                 <a href="/#platform" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Platform</a>
                 <a href="/#ecosystem" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Sectors</a>
+                <a href="/about" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">About</a>
                 <a href="/#contact" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Contact</a>
                 <a href="/executive-guidance" className="block px-3 py-2 bg-evans-orange text-white rounded-lg">Executive Guidance</a>
               </div>
@@ -139,7 +140,7 @@ export default function EducationPage() {
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6">
               <GraduationCap className="w-4 h-4 mr-2" />
-              Educational Institution ECPORA Solutions
+              Educational ECPORA Assessment Solutions
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
@@ -153,8 +154,8 @@ export default function EducationPage() {
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Comprehensive ECPORA organizational assessments designed for K-12 schools, colleges, universities, 
-              and early childhood centers committed to creating safe learning environments for all students.
+              Specialized ECPORA organizational assessments designed for K-12 schools, universities, and educational institutions 
+              committed to creating safe learning environments where children and students can thrive.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -169,7 +170,7 @@ export default function EducationPage() {
                 href="#programs" 
                 className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
               >
-                View Educational Programs
+                View Education Programs
               </a>
             </div>
             
@@ -186,15 +187,15 @@ export default function EducationPage() {
                 <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
                   <Users className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">500K+</h3>
+                <h3 className="text-2xl font-bold text-white">2M+</h3>
                 <p className="text-white/80 text-sm">Students Protected</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="w-6 h-6 text-white" />
+                  <BookOpen className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">98%</h3>
-                <p className="text-white/80 text-sm">Safety Improvement</p>
+                <h3 className="text-2xl font-bold text-white">45</h3>
+                <p className="text-white/80 text-sm">States Covered</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -213,10 +214,10 @@ export default function EducationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-              Educational Institution Assessment Challenges
+              Educational Assessment Challenges
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Understanding the unique safety requirements and operational complexities facing educational institutions at all levels.
+              Understanding the unique child protection requirements and operational complexities facing educational institutions.
             </p>
           </div>
 
@@ -225,50 +226,50 @@ export default function EducationPage() {
               <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-evans-green" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Diverse Student Populations</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Multi-Stakeholder Coordination</h3>
               <p className="text-slate-600 text-sm">
-                Managing child protection across different age groups, developmental stages, 
-                and diverse student populations with varying needs and vulnerabilities.
+                Complex coordination between administrators, teachers, staff, parents, and students 
+                requiring clear communication protocols and shared accountability frameworks.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mb-4">
-                <Building2 className="w-6 h-6 text-evans-blue" />
+                <Shield className="w-6 h-6 text-evans-blue" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Campus Environments</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Age-Appropriate Implementation</h3>
               <p className="text-slate-600 text-sm">
-                Complex campus layouts, multiple buildings, residential facilities, 
-                and varied activity spaces requiring comprehensive safety protocols.
+                Developing protection protocols that are developmentally appropriate 
+                across different age groups from early childhood through higher education.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-orange/10 rounded-xl flex items-center justify-center mb-4">
-                <FileText className="w-6 h-6 text-evans-orange" />
+                <Building2 className="w-6 h-6 text-evans-orange" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Regulatory Compliance</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Campus Environment Complexity</h3>
               <p className="text-slate-600 text-sm">
-                Meeting federal education regulations, state licensing requirements, 
-                and accreditation standards while maintaining educational excellence.
+                Managing child protection across diverse campus environments including 
+                classrooms, dormitories, athletic facilities, and extracurricular activities.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-slate/10 rounded-xl flex items-center justify-center mb-4">
-                <Globe className="w-6 h-6 text-evans-slate" />
+                <FileText className="w-6 h-6 text-evans-slate" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Community Integration</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Regulatory Compliance</h3>
               <p className="text-slate-600 text-sm">
-                Balancing open educational environments with security needs while 
-                maintaining positive relationships with families and communities.
+                Meeting federal, state, and local educational regulations while maintaining 
+                compliance with Title IX, FERPA, and other educational protection standards.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Educational Programs */}
+      {/* Education Programs */}
       <section id="programs" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -276,7 +277,7 @@ export default function EducationPage() {
               Educational Assessment Programs
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Specialized ECPORA assessment solutions for educational institutions at all levels. 
+              Tailored ECPORA assessment solutions for educational institutions at all levels. 
               Investment details provided through customized educational proposals.
             </p>
           </div>
@@ -294,7 +295,7 @@ export default function EducationPage() {
                 <div className="p-8">
                   {program.highlight && (
                     <div className="bg-evans-green text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">
-                      Most Popular
+                      Most Comprehensive
                     </div>
                   )}
                   
@@ -338,7 +339,7 @@ export default function EducationPage() {
               Educational Partnership Benefits
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Specialized advantages designed for educational institutions committed to student safety and academic excellence.
+              Specialized advantages designed for educational institutions committed to child protection excellence and student success.
             </p>
           </div>
 
@@ -347,21 +348,21 @@ export default function EducationPage() {
               <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mb-6">
                 <Shield className="w-6 h-6 text-evans-green" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Student Safety Excellence</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Enhanced Learning Environment</h3>
               <p className="text-slate-600">
-                Comprehensive protection frameworks ensure the highest levels of student safety 
-                while maintaining positive learning environments that foster academic growth and development.
+                Comprehensive child protection frameworks create safer learning environments 
+                where students can focus on academic achievement and personal development without fear.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mb-6">
-                <BarChart3 className="w-6 h-6 text-evans-blue" />
+                <Users className="w-6 h-6 text-evans-blue" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Family Confidence</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Community Confidence</h3>
               <p className="text-slate-600">
-                Demonstrated commitment to child protection builds trust with families and communities, 
-                enhancing institutional reputation and strengthening enrollment and support.
+                Demonstrated commitment to child protection excellence builds trust with parents, 
+                students, and the broader community while enhancing institutional reputation.
               </p>
             </div>
 
@@ -369,10 +370,10 @@ export default function EducationPage() {
               <div className="w-12 h-12 bg-evans-orange/10 rounded-xl flex items-center justify-center mb-6">
                 <Award className="w-6 h-6 text-evans-orange" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Accreditation Support</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Institutional Excellence</h3>
               <p className="text-slate-600">
-                Comprehensive documentation and evidence-based practices support accreditation processes 
-                and regulatory compliance while demonstrating institutional commitment to excellence.
+                Industry-leading child protection practices position educational institutions 
+                as leaders in student safety and comprehensive educational excellence.
               </p>
             </div>
           </div>
@@ -388,7 +389,7 @@ export default function EducationPage() {
             </h2>
             <p className="text-xl text-slate-600">
               Ready to enhance your institution's child protection capabilities? 
-              Contact our educational assessment specialists to discuss your specific needs and receive a customized proposal.
+              Contact our educational assessment specialists to discuss your needs and receive a customized proposal.
             </p>
           </div>
 
@@ -407,12 +408,12 @@ export default function EducationPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Administrator Name
+                    Contact Person
                   </label>
                   <input 
                     type="text" 
                     className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-green focus:border-transparent outline-none transition-all duration-300"
-                    placeholder="Principal/Director/Administrator"
+                    placeholder="Administrator/Principal Name"
                   />
                 </div>
               </div>
@@ -425,7 +426,7 @@ export default function EducationPage() {
                   <input 
                     type="email" 
                     className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-green focus:border-transparent outline-none transition-all duration-300"
-                    placeholder="admin@school.edu"
+                    placeholder="contact@school.edu"
                   />
                 </div>
                 <div>
@@ -446,13 +447,12 @@ export default function EducationPage() {
                 </label>
                 <select className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-green focus:border-transparent outline-none transition-all duration-300">
                   <option>Select Institution Type</option>
-                  <option>Early Childhood Center</option>
+                  <option>K-12 School District</option>
                   <option>Elementary School</option>
                   <option>Middle School</option>
                   <option>High School</option>
-                  <option>K-12 District</option>
+                  <option>University/College</option>
                   <option>Community College</option>
-                  <option>Four-Year University</option>
                   <option>Private School</option>
                   <option>Charter School</option>
                   <option>Other</option>
@@ -466,15 +466,15 @@ export default function EducationPage() {
                 <textarea 
                   rows={4}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-green focus:border-transparent outline-none transition-all duration-300"
-                  placeholder="Please describe your institution's child protection assessment needs, student population, campus scope, timeline, specific safety concerns, and any accreditation or compliance requirements..."
+                  placeholder="Please describe your institution's child protection assessment needs, student population, campus facilities, timeline, and any specific compliance requirements..."
                 ></textarea>
               </div>
 
               <div className="bg-evans-green/5 border border-evans-green/20 rounded-xl p-6">
                 <h4 className="font-bold text-evans-green mb-2">Educational Proposal Process</h4>
                 <p className="text-sm text-slate-700">
-                  We provide customized educational proposals including detailed assessment scope, safety frameworks, 
-                  timeline, and investment structure designed for educational budgets and procurement processes.
+                  We provide customized educational proposals including detailed scope, implementation strategies, 
+                  timeline, and investment structure designed for educational budgets and institutional requirements.
                 </p>
               </div>
 
