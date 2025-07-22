@@ -18,7 +18,6 @@ import {
   Phone,
   Calendar,
   TrendingUp,
-  Factory,
   Briefcase,
   Target,
   Menu,
@@ -39,45 +38,45 @@ export default function EnterprisePage() {
 
   const enterpriseSolutions = [
     {
-      title: "Fortune 500 Enterprise Program",
-      subtitle: "Global Corporation Excellence",
-      description: "Comprehensive ECPORA assessments designed for large-scale enterprises with complex organizational structures and global operations.",
+      title: "Fortune 500 Program",
+      subtitle: "Enterprise-Scale Excellence",
+      description: "Comprehensive ECPORA assessments designed for large corporations with complex organizational structures and multi-location operations.",
       features: [
-        "Multi-location assessment coordination",
-        "Executive leadership integration",
-        "Corporate governance alignment",
-        "Stakeholder reporting frameworks",
-        "Global compliance standardization"
+        "Multi-location coordination frameworks",
+        "Corporate governance integration",
+        "Executive accountability systems",
+        "Brand protection strategies",
+        "Investor relations compliance"
       ],
-      cta: "Request Enterprise Proposal",
+      cta: "Request Enterprise Consultation",
       highlight: false
     },
     {
-      title: "Mid-Market Corporate Program", 
-      subtitle: "Scalable Business Protection",
-      description: "Specialized ECPORA assessments for growing companies requiring robust child protection frameworks without enterprise complexity.",
+      title: "Mid-Market Business Program", 
+      subtitle: "Scalable Protection Solutions",
+      description: "Strategic ECPORA assessments for growing businesses requiring robust child protection frameworks without enterprise complexity.",
       features: [
-        "Scalable protection protocols",
-        "Department-specific implementation",
-        "Growth-oriented frameworks",
-        "Cost-effective compliance solutions",
-        "Leadership development support"
+        "Scalable implementation strategies",
+        "Cost-effective assessment protocols",
+        "Growth-oriented protection planning",
+        "Industry-specific customization",
+        "Regulatory compliance optimization"
       ],
-      cta: "Schedule Corporate Consultation",
+      cta: "Schedule Business Assessment",
       highlight: true
     },
     {
-      title: "Industry-Specific Program",
-      subtitle: "Sector-Tailored Solutions", 
-      description: "Customized assessments for specific industries with unique child protection requirements and regulatory environments.",
+      title: "Small Business Program",
+      subtitle: "Focused Implementation Excellence", 
+      description: "Streamlined ECPORA assessments for small businesses serving families and children with targeted protection needs.",
       features: [
-        "Industry-specific risk assessment",
-        "Sector compliance expertise",
-        "Peer benchmarking analysis",
-        "Regulatory landscape navigation",
-        "Best practice implementation"
+        "Streamlined assessment process",
+        "Resource-efficient implementation",
+        "Small business budget optimization",
+        "Community-focused strategies",
+        "Simplified compliance frameworks"
       ],
-      cta: "Begin Industry Partnership",
+      cta: "Begin Small Business Partnership",
       highlight: false
     }
   ]
@@ -100,8 +99,9 @@ export default function EnterprisePage() {
               <a href="/" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Home</a>
               <a href="/#platform" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Platform</a>
               <a href="/#ecosystem" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Sectors</a>
+              <a href="/about" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>About</a>
               <a href="/#contact" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Contact</a>
-              <a href="/executive-guidance" className="bg-evans-blue text-white px-4 py-2 rounded-lg hover:bg-evans-blue/90 transition-colors">Executive Guidance</a>
+              <a href="/executive-guidance" className="bg-evans-orange text-white px-4 py-2 rounded-lg hover:bg-evans-orange/90 transition-colors">Executive Guidance</a>
             </div>
 
             {/* Mobile menu button */}
@@ -122,8 +122,9 @@ export default function EnterprisePage() {
                 <a href="/" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Home</a>
                 <a href="/#platform" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Platform</a>
                 <a href="/#ecosystem" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Sectors</a>
+                <a href="/about" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">About</a>
                 <a href="/#contact" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Contact</a>
-                <a href="/executive-guidance" className="block px-3 py-2 bg-evans-blue text-white rounded-lg">Executive Guidance</a>
+                <a href="/executive-guidance" className="block px-3 py-2 bg-evans-orange text-white rounded-lg">Executive Guidance</a>
               </div>
             </div>
           )}
@@ -148,13 +149,13 @@ export default function EnterprisePage() {
                 Child Protection
               </span>
               <span className="block text-evans-green">
-                Leadership
+                Excellence
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Strategic ECPORA organizational assessments designed for corporate enterprises, Fortune 500 companies, 
-              and industry leaders committed to comprehensive child protection excellence across all operations.
+              Strategic ECPORA organizational assessments designed for corporations and businesses serving families and children, 
+              creating competitive advantage through industry-leading child protection excellence.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -169,7 +170,7 @@ export default function EnterprisePage() {
                 href="#programs" 
                 className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
               >
-                View Enterprise Programs
+                View Business Programs
               </a>
             </div>
             
@@ -179,19 +180,19 @@ export default function EnterprisePage() {
                 <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
                   <Building2 className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">200+</h3>
+                <h3 className="text-2xl font-bold text-white">250+</h3>
                 <p className="text-white/80 text-sm">Enterprise Clients</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Globe className="w-6 h-6 text-white" />
+                  <TrendingUp className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">25+</h3>
-                <p className="text-white/80 text-sm">Global Markets</p>
+                <h3 className="text-2xl font-bold text-white">$50M+</h3>
+                <p className="text-white/80 text-sm">Risk Mitigation Value</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="w-6 h-6 text-white" />
+                  <Target className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white">95%</h3>
                 <p className="text-white/80 text-sm">ROI Achievement</p>
@@ -216,52 +217,52 @@ export default function EnterprisePage() {
               Enterprise Assessment Challenges
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Understanding the unique operational complexities and strategic requirements facing large-scale enterprise organizations.
+              Understanding the unique business requirements and competitive considerations facing enterprises in child protection.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-orange/10 rounded-xl flex items-center justify-center mb-4">
-                <Globe className="w-6 h-6 text-evans-orange" />
+                <TrendingUp className="w-6 h-6 text-evans-orange" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Global Operations</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Business Continuity</h3>
               <p className="text-slate-600 text-sm">
-                Multi-location, multi-country operations requiring standardized child protection 
-                protocols across diverse regulatory environments and cultural contexts.
+                Implementing comprehensive child protection without disrupting business operations 
+                or impacting customer experience and revenue generation.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-evans-blue" />
+                <Shield className="w-6 h-6 text-evans-blue" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Stakeholder Expectations</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Brand Protection</h3>
               <p className="text-slate-600 text-sm">
-                Managing expectations from shareholders, board members, customers, and communities 
-                requiring transparent child protection governance and reporting.
+                Safeguarding corporate reputation and brand value through proactive child protection 
+                measures that prevent incidents and demonstrate corporate responsibility.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-evans-green" />
+                <BarChart3 className="w-6 h-6 text-evans-green" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Risk Management</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Competitive Advantage</h3>
               <p className="text-slate-600 text-sm">
-                Enterprise-level risk assessment and mitigation strategies requiring comprehensive 
-                frameworks for reputation, legal, and operational risk management.
+                Creating market differentiation through industry-leading child protection standards 
+                that attract customers and enhance business development opportunities.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-slate/10 rounded-xl flex items-center justify-center mb-4">
-                <Factory className="w-6 h-6 text-evans-slate" />
+                <Users className="w-6 h-6 text-evans-slate" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-3">Operational Complexity</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">Stakeholder Confidence</h3>
               <p className="text-slate-600 text-sm">
-                Large-scale organizational structures with multiple divisions, departments, 
-                and business units requiring coordinated child protection implementation.
+                Building trust with investors, customers, and partners through demonstrated 
+                commitment to child protection excellence and corporate social responsibility.
               </p>
             </div>
           </div>
@@ -276,7 +277,7 @@ export default function EnterprisePage() {
               Enterprise Assessment Programs
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Strategic ECPORA assessment solutions for enterprise organizations at all scales. 
+              Strategic ECPORA assessment solutions for businesses at all scales. 
               Investment details provided through customized enterprise proposals.
             </p>
           </div>
@@ -294,7 +295,7 @@ export default function EnterprisePage() {
                 <div className="p-8">
                   {program.highlight && (
                     <div className="bg-evans-orange text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">
-                      Most Scalable
+                      Most Popular
                     </div>
                   )}
                   
@@ -312,8 +313,8 @@ export default function EnterprisePage() {
                   </div>
 
                   <div className="text-center mb-6">
-                    <div className="text-lg font-semibold text-slate-800 mb-1">Contact for Enterprise Investment</div>
-                    <p className="text-sm text-slate-600">Customized proposals based on organizational scale and complexity</p>
+                    <div className="text-lg font-semibold text-slate-800 mb-1">Contact for Enterprise Pricing</div>
+                    <p className="text-sm text-slate-600">ROI-focused proposals with measurable business outcomes</p>
                   </div>
                   
                   <button className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
@@ -338,30 +339,30 @@ export default function EnterprisePage() {
               Enterprise Partnership Benefits
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Strategic advantages designed for enterprise organizations committed to child protection leadership and operational excellence.
+              Strategic business advantages designed for enterprises committed to child protection excellence and market leadership.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-orange/10 rounded-xl flex items-center justify-center mb-6">
-                <Shield className="w-6 h-6 text-evans-orange" />
+                <TrendingUp className="w-6 h-6 text-evans-orange" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Brand Protection</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Competitive Differentiation</h3>
               <p className="text-slate-600">
-                Comprehensive child protection frameworks protect enterprise reputation and brand value 
-                while demonstrating corporate responsibility and stakeholder commitment to safety excellence.
+                Industry-leading child protection standards create significant competitive advantages, 
+                enhancing market position and attracting customers who value corporate responsibility.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
               <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mb-6">
-                <TrendingUp className="w-6 h-6 text-evans-blue" />
+                <Shield className="w-6 h-6 text-evans-blue" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Competitive Advantage</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Risk Mitigation</h3>
               <p className="text-slate-600">
-                Industry-leading child protection practices create differentiation in the marketplace, 
-                enhance customer trust, and support premium positioning in competitive environments.
+                Comprehensive protection frameworks reduce liability exposure, insurance costs, 
+                and reputational risks while strengthening overall enterprise risk management.
               </p>
             </div>
 
@@ -369,10 +370,10 @@ export default function EnterprisePage() {
               <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mb-6">
                 <Award className="w-6 h-6 text-evans-green" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Operational Excellence</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Stakeholder Value</h3>
               <p className="text-slate-600">
-                Streamlined processes and enterprise-grade frameworks improve operational efficiency 
-                while maintaining the highest standards of child protection across all business units.
+                Demonstrated commitment to child protection excellence builds investor confidence, 
+                enhances ESG ratings, and creates sustainable business value for all stakeholders.
               </p>
             </div>
           </div>
@@ -387,8 +388,8 @@ export default function EnterprisePage() {
               Request Enterprise Assessment Proposal
             </h2>
             <p className="text-xl text-slate-600">
-              Ready to elevate your organization's child protection capabilities? 
-              Contact our enterprise assessment specialists to discuss your strategic needs and receive a customized proposal.
+              Ready to create competitive advantage through child protection excellence? 
+              Contact our enterprise assessment specialists to discuss your business needs and receive a ROI-focused proposal.
             </p>
           </div>
 
@@ -402,7 +403,7 @@ export default function EnterprisePage() {
                   <input 
                     type="text" 
                     className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-orange focus:border-transparent outline-none transition-all duration-300"
-                    placeholder="Corporation/Company Name"
+                    placeholder="Your Company Name"
                   />
                 </div>
                 <div>
@@ -412,7 +413,7 @@ export default function EnterprisePage() {
                   <input 
                     type="text" 
                     className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-orange focus:border-transparent outline-none transition-all duration-300"
-                    placeholder="C-Suite/VP/Director Name"
+                    placeholder="CEO/Executive Name"
                   />
                 </div>
               </div>
@@ -420,7 +421,7 @@ export default function EnterprisePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Corporate Email
+                    Business Email
                   </label>
                   <input 
                     type="email" 
@@ -442,36 +443,37 @@ export default function EnterprisePage() {
 
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Company Size
+                  Business Type
                 </label>
                 <select className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-orange focus:border-transparent outline-none transition-all duration-300">
-                  <option>Select Company Size</option>
-                  <option>Fortune 500</option>
+                  <option>Select Business Type</option>
+                  <option>Fortune 500 Corporation</option>
                   <option>Large Enterprise (1000+ employees)</option>
-                  <option>Mid-Market (250-999 employees)</option>
-                  <option>Growth Company (100-249 employees)</option>
-                  <option>Small Business (50-99 employees)</option>
-                  <option>Startup/Emerging (Under 50 employees)</option>
+                  <option>Mid-Market Business (100-999 employees)</option>
+                  <option>Small Business (10-99 employees)</option>
+                  <option>Startup/Emerging Business</option>
+                  <option>Family Entertainment Business</option>
+                  <option>Youth Services Organization</option>
                   <option>Other</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Assessment Requirements
+                  Assessment Requirements & Business Objectives
                 </label>
                 <textarea 
                   rows={4}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-orange focus:border-transparent outline-none transition-all duration-300"
-                  placeholder="Please describe your organization's child protection assessment needs, operational scope, global/multi-location requirements, timeline, specific industry considerations, and any regulatory or stakeholder requirements..."
+                  placeholder="Please describe your business's child protection assessment needs, industry sector, customer base, competitive objectives, timeline, and desired business outcomes..."
                 ></textarea>
               </div>
 
               <div className="bg-evans-orange/5 border border-evans-orange/20 rounded-xl p-6">
                 <h4 className="font-bold text-evans-orange mb-2">Enterprise Proposal Process</h4>
                 <p className="text-sm text-slate-700">
-                  We provide comprehensive enterprise proposals including detailed assessment scope, implementation strategy, 
-                  timeline, and investment structure designed for enterprise budgets and procurement processes.
+                  We provide strategic enterprise proposals including detailed ROI analysis, competitive positioning, 
+                  implementation roadmap, and investment structure designed to deliver measurable business value.
                 </p>
               </div>
 
