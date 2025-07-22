@@ -74,22 +74,22 @@ export default function HomePage() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <Shield className="h-8 w-8 text-evans-blue" />
-              <span className="ml-2 text-xl font-bold text-slate-800">Evans National Safety Group</span>
+              <span className={`ml-2 text-xl font-bold ${scrolled ? 'text-slate-800' : 'text-white'}`}>Evans National Safety Group</span>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#platform" className="text-slate-700 hover:text-evans-blue transition-colors">Platform</a>
-              <a href="#ecosystem" className="text-slate-700 hover:text-evans-blue transition-colors">Sectors</a>
-              <a href="#contact" className="text-slate-700 hover:text-evans-blue transition-colors">Contact</a>
-              <a href="/executive-guidance" className="bg-evans-blue text-white px-4 py-2 rounded-lg hover:bg-evans-blue/90 transition-colors">Executive Guidance</a>
+              <a href="#platform" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Platform</a>
+              <a href="#ecosystem" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Sectors</a>
+              <a href="#contact" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Contact</a>
+              <a href="/executive-guidance" className="bg-evans-orange text-white px-4 py-2 rounded-lg hover:bg-evans-orange/90 transition-colors">Executive Guidance</a>
             </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-slate-700 hover:text-evans-blue"
+                className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white hover:text-white/80'}`}
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -103,33 +103,36 @@ export default function HomePage() {
                 <a href="#platform" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Platform</a>
                 <a href="#ecosystem" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Sectors</a>
                 <a href="#contact" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Contact</a>
-                <a href="/executive-guidance" className="block px-3 py-2 bg-evans-blue text-white rounded-lg">Executive Guidance</a>
+                <a href="/executive-guidance" className="block px-3 py-2 bg-evans-orange text-white rounded-lg">Executive Guidance</a>
               </div>
             </div>
           )}
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+      {/* Hero Section with Gradient */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-evans-gradient-primary"></div>
+        <div className="absolute inset-0 bg-black/10"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-evans-blue/10 rounded-full text-evans-blue text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6">
               <Shield className="w-4 h-4 mr-2" />
               Technology-Enhanced Child Protection Excellence
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800 mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               ECPORA Child
-              <span className="block text-evans-blue">
+              <span className="block text-evans-orange">
                 Protection
               </span>
-              <span className="block text-slate-600">
+              <span className="block text-evans-green">
                 Assessments
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
               Evans National Safety Group delivers comprehensive ECPORA organizational assessments 
               backed by 27+ years of child protection expertise, evidence-based methodology, and AI-enhanced analysis tools.
             </p>
@@ -137,14 +140,14 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <a 
                 href="#contact" 
-                className="bg-evans-blue hover:bg-evans-blue/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center group"
+                className="bg-evans-orange hover:bg-evans-orange/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center group"
               >
                 Schedule ECPORA Assessment
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a 
                 href="#platform" 
-                className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
               >
                 Learn About Our Approach
               </a>
@@ -153,32 +156,32 @@ export default function HomePage() {
             {/* Statistics */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Award className="w-6 h-6 text-evans-blue" />
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Award className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800">27+</h3>
-                <p className="text-slate-600 text-sm">Years Expertise</p>
+                <h3 className="text-2xl font-bold text-white">27+</h3>
+                <p className="text-white/80 text-sm">Years Expertise</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-evans-green" />
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Users className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800">500+</h3>
-                <p className="text-slate-600 text-sm">Organizations Served</p>
+                <h3 className="text-2xl font-bold text-white">500+</h3>
+                <p className="text-white/80 text-sm">Organizations Served</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-evans-orange/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Star className="w-6 h-6 text-evans-orange" />
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Star className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800">99.5%</h3>
-                <p className="text-slate-600 text-sm">Client Satisfaction</p>
+                <h3 className="text-2xl font-bold text-white">99.5%</h3>
+                <p className="text-white/80 text-sm">Client Satisfaction</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-evans-slate/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Globe className="w-6 h-6 text-evans-slate" />
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Globe className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800">50</h3>
-                <p className="text-slate-600 text-sm">States Covered</p>
+                <h3 className="text-2xl font-bold text-white">50</h3>
+                <p className="text-white/80 text-sm">States Covered</p>
               </div>
             </div>
           </div>
