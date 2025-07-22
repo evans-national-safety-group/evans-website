@@ -426,7 +426,7 @@ export default function ExecutiveGuidancePage() {
                   Strategic Partnership Requirements
                 </label>
                 <textarea 
-                  rows="4" 
+                  rows={4}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-blue focus:border-transparent outline-none transition-all duration-300"
                   placeholder="Please describe your executive decision support needs, critical challenges you're facing, timeline requirements, and any specific strategic guidance areas where partnership would be most valuable..."
                 ></textarea>
