@@ -50,9 +50,7 @@ export default function ExecutiveGuidancePage() {
         "Personal leadership assessment"
       ],
       cta: "Schedule Executive Consultation",
-      highlight: false,
-      investment: "$50,000 - $150,000",
-      duration: "6-12 months"
+      highlight: false
     },
     {
       title: "Senior Leadership Collective", 
@@ -66,9 +64,7 @@ export default function ExecutiveGuidancePage() {
         "Continuous improvement frameworks"
       ],
       cta: "Explore Team Development",
-      highlight: true,
-      investment: "$100,000 - $300,000",
-      duration: "12-18 months"
+      highlight: true
     },
     {
       title: "Board of Directors Program",
@@ -82,9 +78,7 @@ export default function ExecutiveGuidancePage() {
         "Strategic planning integration"
       ],
       cta: "Begin Board Development",
-      highlight: false,
-      investment: "$75,000 - $200,000",
-      duration: "6-9 months"
+      highlight: false
     }
   ]
 
@@ -285,7 +279,7 @@ export default function ExecutiveGuidancePage() {
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Exclusive leadership development programs designed for senior executives committed to organizational transformation. 
-              Investment levels reflect the premium nature and measurable business outcomes of executive development.
+              Contact for customized executive proposals with measurable business outcomes.
             </p>
           </div>
 
@@ -310,7 +304,7 @@ export default function ExecutiveGuidancePage() {
                   <p className="text-lg text-evans-blue font-semibold mb-4">{program.subtitle}</p>
                   <p className="text-slate-600 mb-6">{program.description}</p>
                   
-                  <div className="space-y-3 mb-6">
+                  <div className="space-y-3 mb-8">
                     {program.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-evans-green mr-3 mt-0.5 flex-shrink-0" />
@@ -319,17 +313,9 @@ export default function ExecutiveGuidancePage() {
                     ))}
                   </div>
 
-                  <div className="border-t border-slate-200 pt-6 mb-6">
-                    <div className="grid grid-cols-2 gap-4 text-center">
-                      <div>
-                        <div className="text-lg font-bold text-slate-800">{program.investment}</div>
-                        <div className="text-sm text-slate-600">Investment Range</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-slate-800">{program.duration}</div>
-                        <div className="text-sm text-slate-600">Program Duration</div>
-                      </div>
-                    </div>
+                  <div className="text-center mb-6">
+                    <div className="text-lg font-semibold text-slate-800 mb-1">Contact for Executive Pricing</div>
+                    <p className="text-sm text-slate-600">Premium programs with measurable leadership transformation outcomes</p>
                   </div>
                   
                   <button className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
