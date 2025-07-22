@@ -110,9 +110,9 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section with Gradient */}
+      {/* Hero Section with Blue Gradient */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-evans-gradient-primary"></div>
+        <div className="absolute inset-0 bg-evans-gradient-blue"></div>
         <div className="absolute inset-0 bg-black/10"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
