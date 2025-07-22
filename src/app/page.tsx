@@ -21,7 +21,7 @@ import {
   X
 } from 'lucide-react'
 
-export default function HomePage() {
+export default function Homepage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -33,34 +33,34 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const ecosystemSectors = [
+  const ecosystemCards = [
     {
       title: "Government Agencies",
-      description: "Federal, state, and local government ECPORA assessments tailored for public sector compliance requirements and regulatory standards.",
+      description: "Federal, state, and local government ECPORA assessments with comprehensive compliance frameworks and regulatory excellence.",
       icon: Building2,
-      link: "/government",
-      color: "evans-blue"
+      href: "/government",
+      gradient: "bg-evans-gradient-blue"
     },
     {
       title: "Educational Institutions", 
-      description: "K-12 schools, universities, and educational organizations requiring comprehensive child protection assessment frameworks.",
+      description: "K-12 schools, universities, and educational organizations with specialized child protection assessment solutions.",
       icon: Users,
-      link: "/education", 
-      color: "evans-green"
+      href: "/education",
+      gradient: "bg-evans-gradient-green"
     },
     {
       title: "Enterprise Organizations",
-      description: "Corporate enterprises and large organizations implementing child protection protocols across operational environments.",
+      description: "Corporate child protection assessments for businesses serving families and youth across all industry sectors.",
       icon: BarChart3,
-      link: "/enterprise",
-      color: "evans-orange"
+      href: "/enterprise", 
+      gradient: "bg-evans-gradient-orange"
     },
     {
       title: "Non-Profit Organizations",
-      description: "Mission-driven organizations serving vulnerable populations requiring specialized child protection assessment approaches.",
-      icon: Star,
-      link: "/nonprofit",
-      color: "evans-slate"
+      description: "Mission-aligned ECPORA assessments for non-profits, faith-based organizations, and community groups.",
+      icon: Globe,
+      href: "/nonprofit",
+      gradient: "bg-evans-gradient-slate"
     }
   ]
 
@@ -81,6 +81,7 @@ export default function HomePage() {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#platform" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Platform</a>
               <a href="#ecosystem" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Sectors</a>
+              <a href="/about" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>About</a>
               <a href="#contact" className={`${scrolled ? 'text-slate-700 hover:text-evans-blue' : 'text-white/90 hover:text-white'} transition-colors`}>Contact</a>
               <a href="/executive-guidance" className="bg-evans-orange text-white px-4 py-2 rounded-lg hover:bg-evans-orange/90 transition-colors">Executive Guidance</a>
             </div>
@@ -102,6 +103,7 @@ export default function HomePage() {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 <a href="#platform" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Platform</a>
                 <a href="#ecosystem" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Sectors</a>
+                <a href="/about" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">About</a>
                 <a href="#contact" className="block px-3 py-2 text-slate-700 hover:text-evans-blue">Contact</a>
                 <a href="/executive-guidance" className="block px-3 py-2 bg-evans-orange text-white rounded-lg">Executive Guidance</a>
               </div>
@@ -110,7 +112,7 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section with Blue Gradient */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-evans-gradient-blue"></div>
         <div className="absolute inset-0 bg-black/10"></div>
@@ -133,8 +135,7 @@ export default function HomePage() {
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Evans National Safety Group delivers comprehensive ECPORA organizational assessments 
-              backed by 27+ years of child protection expertise, evidence-based methodology, and AI-enhanced analysis tools.
+              Evans National Safety Group delivers comprehensive ECPORA organizational assessments backed by 27+ years of child protection expertise, evidence-based methodology, and AI-enhanced analysis tools.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -188,130 +189,139 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Platform Overview */}
-      <section id="platform" className="py-20 bg-slate-50">
+      {/* Platform Section */}
+      <section id="platform" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-              ECPORA Assessment Platform
+              The ECPORA Assessment Platform
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our comprehensive approach combines traditional evaluation methods with advanced technology 
-              to provide deeper insights into organizational child protection capabilities.
+              Comprehensive organizational readiness assessments that go beyond compliance to create cultures of child protection excellence.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-evans-blue/30 transition-all duration-300">
               <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mb-6">
-                <BarChart3 className="w-6 h-6 text-evans-blue" />
+                <Shield className="w-6 h-6 text-evans-blue" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">AI-Enhanced Analysis</h3>
-              <p className="text-slate-600 mb-6">
-                Advanced machine learning algorithms analyze organizational patterns, risk factors, 
-                and compliance gaps to provide comprehensive assessment insights.
+              <h3 className="text-xl font-bold text-slate-800 mb-4">Evidence-Based Methodology</h3>
+              <p className="text-slate-600">
+                27+ years of child protection expertise distilled into a comprehensive assessment framework that identifies vulnerabilities before incidents occur.
               </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Pattern Recognition Analysis
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Risk Prediction Modeling
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Compliance Gap Detection
-                </li>
-              </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-evans-green/30 transition-all duration-300">
               <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mb-6">
-                <Shield className="w-6 h-6 text-evans-green" />
+                <BarChart3 className="w-6 h-6 text-evans-green" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Evidence-Based Framework</h3>
-              <p className="text-slate-600 mb-6">
-                Built on 27+ years of child protection research and best practices, 
-                ensuring assessments meet the highest professional standards.
+              <h3 className="text-xl font-bold text-slate-800 mb-4">AI-Enhanced Analysis</h3>
+              <p className="text-slate-600">
+                Advanced technology integration provides deeper insights and pattern recognition to optimize organizational protection systems.
               </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Research-Validated Methods
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Industry Best Practices
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Continuous Methodology Updates
-                </li>
-              </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-evans-orange/30 transition-all duration-300">
               <div className="w-12 h-12 bg-evans-orange/10 rounded-xl flex items-center justify-center mb-6">
-                <FileText className="w-6 h-6 text-evans-orange" />
+                <CheckCircle className="w-6 h-6 text-evans-orange" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Comprehensive Reporting</h3>
-              <p className="text-slate-600 mb-6">
-                Detailed assessment reports with actionable recommendations, 
-                risk mitigation strategies, and improvement roadmaps.
+              <h3 className="text-xl font-bold text-slate-800 mb-4">Sector-Specific Solutions</h3>
+              <p className="text-slate-600">
+                Tailored assessments for government, education, enterprise, and non-profit organizations with industry-specific requirements and challenges.
               </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Executive Summary Reports
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Detailed Findings Analysis
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-evans-green mr-3" />
-                  Implementation Roadmaps
-                </li>
-              </ul>
+            </div>
+
+            <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-evans-slate/30 transition-all duration-300">
+              <div className="w-12 h-12 bg-evans-slate/10 rounded-xl flex items-center justify-center mb-6">
+                <Users className="w-6 h-6 text-evans-slate" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-4">Executive Guidance</h3>
+              <p className="text-slate-600">
+                C-suite and senior leadership development programs that create accountability and drive organizational transformation from the top down.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-evans-blue/30 transition-all duration-300">
+              <div className="w-12 h-12 bg-evans-blue/10 rounded-xl flex items-center justify-center mb-6">
+                <FileText className="w-6 h-6 text-evans-blue" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-4">Comprehensive Reporting</h3>
+              <p className="text-slate-600">
+                Detailed assessment reports with actionable recommendations, implementation timelines, and ongoing measurement frameworks.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-evans-green/30 transition-all duration-300">
+              <div className="w-12 h-12 bg-evans-green/10 rounded-xl flex items-center justify-center mb-6">
+                <Zap className="w-6 h-6 text-evans-green" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-4">Continuous Improvement</h3>
+              <p className="text-slate-600">
+                Ongoing partnership and support to ensure sustained organizational excellence and continuous adaptation to emerging best practices.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Ecosystem */}
-      <section id="ecosystem" className="py-20 bg-white">
+      {/* Ecosystem Section */}
+      <section id="ecosystem" className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-              Multi-Sector Expertise
+              Comprehensive Sector Solutions
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Specialized ECPORA assessments tailored for diverse organizational contexts, 
-              from educational institutions to government agencies and nonprofit organizations.
+              Specialized ECPORA assessments designed for the unique challenges and requirements of your organizational sector.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {ecosystemSectors.map((sector, index) => (
-              <div key={index} className="bg-white rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300 group">
-                <div className="p-8">
-                  <div className={`w-12 h-12 bg-${sector.color}/10 rounded-xl flex items-center justify-center mb-6`}>
-                    <sector.icon className={`w-6 h-6 text-${sector.color}`} />
+            {ecosystemCards.map((card, index) => (
+              <a 
+                key={index}
+                href={card.href}
+                className="group block relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className={`absolute inset-0 ${card.gradient}`}></div>
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="relative p-8 text-white">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mr-4">
+                      <card.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold">{card.title}</h3>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-800 mb-4">{sector.title}</h3>
-                  <p className="text-slate-600 mb-6">{sector.description}</p>
-                  <a 
-                    href={sector.link}
-                    className={`inline-flex items-center text-${sector.color} font-semibold hover:text-${sector.color}/80 transition-colors group-hover:translate-x-1 transform duration-300`}
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
+                  <p className="text-white/90 mb-6 leading-relaxed">{card.description}</p>
+                  <div className="flex items-center text-white group-hover:translate-x-2 transition-transform duration-300">
+                    <span className="font-semibold mr-2">Explore Solutions</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </div>
                 </div>
-              </div>
+              </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Executive Guidance CTA */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-evans-gradient-primary rounded-2xl p-12 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Executive Guidance Programs
+            </h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Specialized consultation and development programs for C-suite executives and senior leadership teams committed to child protection excellence.
+            </p>
+            <a 
+              href="/executive-guidance" 
+              className="bg-white text-evans-blue hover:bg-white/90 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center group"
+            >
+              Explore Executive Programs
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
       </section>
@@ -321,11 +331,10 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-              Schedule Your ECPORA Assessment
+              Ready to Begin Your ECPORA Assessment?
             </h2>
             <p className="text-xl text-slate-600">
-              Ready to enhance your organization's child protection capabilities? 
-              Contact our assessment team to discuss your specific needs and schedule a comprehensive evaluation.
+              Contact Evans National Safety Group to discuss your organization's child protection needs and schedule your comprehensive ECPORA assessment.
             </p>
           </div>
 
@@ -349,7 +358,7 @@ export default function HomePage() {
                   <input 
                     type="text" 
                     className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-blue focus:border-transparent outline-none transition-all duration-300"
-                    placeholder="Your Full Name"
+                    placeholder="Your Name"
                   />
                 </div>
               </div>
@@ -362,7 +371,7 @@ export default function HomePage() {
                   <input 
                     type="email" 
                     className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-blue focus:border-transparent outline-none transition-all duration-300"
-                    placeholder="contact@organization.org"
+                    placeholder="contact@organization.com"
                   />
                 </div>
                 <div>
@@ -383,12 +392,11 @@ export default function HomePage() {
                 </label>
                 <select className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-blue focus:border-transparent outline-none transition-all duration-300">
                   <option>Select Organization Type</option>
-                  <option>Educational Institution (K-12)</option>
-                  <option>Higher Education</option>
                   <option>Government Agency</option>
+                  <option>Educational Institution</option>
+                  <option>Enterprise/Corporate</option>
                   <option>Non-Profit Organization</option>
-                  <option>Healthcare System</option>
-                  <option>Corporate Enterprise</option>
+                  <option>Faith-Based Organization</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -400,8 +408,15 @@ export default function HomePage() {
                 <textarea 
                   rows={4}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-evans-blue focus:border-transparent outline-none transition-all duration-300"
-                  placeholder="Please describe your organization's assessment needs, timeline, and any specific child protection concerns or goals..."
+                  placeholder="Please describe your organization's child protection assessment needs, timeline, and any specific requirements..."
                 ></textarea>
+              </div>
+
+              <div className="bg-evans-blue/5 border border-evans-blue/20 rounded-xl p-6">
+                <h4 className="font-bold text-evans-blue mb-2">Next Steps</h4>
+                <p className="text-sm text-slate-700">
+                  Our assessment specialists will contact you within 24 hours to discuss your needs and provide a customized proposal including timeline, scope, and investment details.
+                </p>
               </div>
 
               <div className="text-center">
@@ -409,7 +424,7 @@ export default function HomePage() {
                   type="submit" 
                   className="bg-evans-blue hover:bg-evans-blue/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center group"
                 >
-                  Schedule Assessment Consultation
+                  Schedule ECPORA Assessment
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
