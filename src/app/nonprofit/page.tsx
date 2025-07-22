@@ -18,7 +18,6 @@ import {
   Phone,
   Calendar,
   Heart,
-  HandHeart,
   Compass,
   Target,
   Menu,
